@@ -491,7 +491,7 @@ a {
 }
 
 .rift-feature {
-  width: min(280px, 78%);
+  width: min(460px, 100%);
   margin: 28px 0 0;
 }
 
@@ -503,6 +503,23 @@ a {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.04);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+}
+
+.rift-feature figcaption {
+  margin-top: 12px;
+  color: rgba(244, 240, 232, 0.7);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.rift-feature figcaption span {
+  display: block;
+  margin-top: 4px;
+  color: rgba(244, 240, 232, 0.42);
+  font-size: 0.78em;
+  font-weight: 600;
 }
 
 .orbit-subsection {
@@ -587,6 +604,11 @@ a {
 .stone-series .stone-figure img {
   width: 100%;
   max-height: min(58vh, 560px);
+  background: transparent;
+}
+
+.detail-gallery-images img {
+  background: transparent;
 }
 
 .stone-series .stone-note {
@@ -691,19 +713,6 @@ a {
   color: var(--muted);
   font-size: 16px;
   line-height: 1.8;
-}
-
-.vessel-subcopy {
-  display: grid;
-  gap: 12px;
-  max-width: 760px;
-  margin-top: 20px;
-}
-
-.vessel-subcopy p + p {
-  color: rgba(244, 240, 232, 0.48);
-  font-size: 0.9em;
-  line-height: 1.7;
 }
 
 .archive-section {
@@ -948,6 +957,10 @@ a {
   border-radius: 8px;
   background: #f4f0e8;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.detail-figure .detail-gallery-images img {
+  background: transparent;
 }
 
 .detail-gallery-images {
