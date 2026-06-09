@@ -67,3 +67,47 @@ if (hero && logo && window.matchMedia("(pointer: fine)").matches) {
     logo.style.setProperty("--logo-y", "0px");
   });
 }
+
+const isWoodStonePage = window.location.pathname.includes("wood-stone-soul.html");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (isWoodStonePage) {
+  const galleries = [...document.querySelectorAll(".detail-gallery-images")].filter(
+    (gallery) => gallery.querySelectorAll("img").length > 1
+  );
+
+  const setGalleryHeight = (gallery) => {
+    const images = [...gallery.querySelectorAll("img")];
+    const width = gallery.getBoundingClientRect().width || gallery.parentElement?.clientWidth || 320;
+    const maxHeight = Math.min(window.innerHeight * 0.78, window.innerWidth <= 760 ? 620 : 900);
+    const heights = images.map((image) => {
+      const imageWidth = Number(image.getAttribute("width")) || image.naturalWidth || width;
+      const imageHeight = Number(image.getAttribute("height")) || image.naturalHeight || width;
+      return Math.min(width * (imageHeight / imageWidth), maxHeight);
+    });
+    gallery.style.setProperty("--slideshow-height", `${Math.ceil(Math.max(...heights))}px`);
+  };
+
+  galleries.forEach((gallery) => {
+    const images = [...gallery.querySelectorAll("img")];
+    let activeIndex = 0;
+
+    gallery.classList.add("is-slideshow");
+    images.forEach((image, index) => {
+      image.classList.toggle("is-active", index === activeIndex);
+    });
+    setGalleryHeight(gallery);
+
+    if (!prefersReducedMotion) {
+      window.setInterval(() => {
+        images[activeIndex].classList.remove("is-active");
+        activeIndex = (activeIndex + 1) % images.length;
+        images[activeIndex].classList.add("is-active");
+      }, 5000);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    galleries.forEach(setGalleryHeight);
+  });
+}
