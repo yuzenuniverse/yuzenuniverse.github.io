@@ -1367,7 +1367,57 @@ a {
 }
 
 .flower-vessel-gallery img:first-child {
-  width: min(100%, 86%);
+  width: min(100%, 94%);
+}
+
+.flower-vessel-gallery img:not(:first-child) {
+  width: min(100%, 78%);
+  justify-self: center;
+}
+
+.tree-spirit-dance-gallery {
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+.tree-spirit-dance-gallery img {
+  width: 100%;
+  max-height: none;
+  justify-self: center;
+}
+
+.tree-spirit-dance-gallery img:first-child {
+  width: min(100%, 1100px);
+}
+
+.tree-spirit-dance-gallery img:nth-child(2) {
+  width: min(100%, 760px);
+}
+
+.captioned-gallery {
+  display: grid;
+  gap: 22px;
+}
+
+.captioned-gallery figure {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.captioned-gallery img {
+  width: min(100%, 780px);
+  max-height: none;
+  justify-self: center;
+}
+
+.captioned-gallery figcaption {
+  max-width: 760px;
+  justify-self: center;
+}
+
+.flower-spirit-ritual-gallery figure:first-child img {
+  width: min(100%, 820px);
 }
 
 .returning-gaze-gallery img:nth-child(3) {
@@ -1410,6 +1460,109 @@ a {
 .good-friends-gallery img {
   width: 100%;
   justify-self: stretch;
+}
+
+.seen-beings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px;
+}
+
+.seen-being-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid rgba(244, 240, 232, 0.14);
+  border-radius: 8px;
+  background: rgba(244, 240, 232, 0.045);
+}
+
+.seen-being-card figure {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  min-height: min(66vh, 680px);
+  background: #f4f0e8;
+}
+
+.seen-being-card:first-child {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  grid-template-rows: auto;
+  align-items: stretch;
+}
+
+.seen-being-card:first-child figure {
+  min-height: 0;
+  padding: 18px;
+}
+
+.seen-being-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.seen-being-card:first-child img {
+  width: min(100%, 760px);
+}
+
+.seen-being-card:nth-child(2) img,
+.seen-being-card:nth-child(3) img {
+  width: min(100%, 560px);
+  max-height: min(72vh, 760px);
+}
+
+.seen-being-body {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+}
+
+.seen-being-body h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.seen-being-body dl {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding-block: 14px;
+  border-block: 1px solid rgba(244, 240, 232, 0.12);
+}
+
+.seen-being-body dl > div {
+  display: grid;
+  gap: 3px;
+}
+
+.seen-being-body dt {
+  color: rgba(244, 240, 232, 0.46);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.seen-being-body dd {
+  margin: 0;
+  color: rgba(244, 240, 232, 0.78);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.seen-being-body .text-link {
+  justify-self: start;
+  min-height: 38px;
+  padding-inline: 14px;
+  font-size: 13px;
 }
 
 .ancient-legend-gallery {
@@ -1652,6 +1805,15 @@ a {
 
   .curation-card-large {
     grid-row: span 1;
+  }
+
+  .seen-beings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seen-being-card:first-child {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
   }
 
   .site-header {
