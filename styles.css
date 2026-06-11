@@ -853,7 +853,14 @@ a {
   font-size: 13px;
   font-weight: 800;
   line-height: 1.3;
-  text-transform: uppercase;
+}
+
+.bilingual-copy .creator-bio .creator-english .creator-english-label span {
+  display: block;
+  margin-top: 2px;
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1.35;
 }
 
 .archive-section {
@@ -1320,6 +1327,25 @@ a {
   background: transparent;
 }
 
+.detail-gallery-images > figure {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  align-content: start;
+}
+
+.detail-gallery-images > figure > img {
+  justify-self: stretch;
+}
+
+.detail-gallery-images > figure > figcaption,
+.seen-being-card figure figcaption {
+  color: rgba(244, 240, 232, 0.62);
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+
 .detail-gallery-images {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.76fr);
@@ -1356,7 +1382,8 @@ a {
   align-items: stretch;
 }
 
-.feature-stack-gallery img:first-child {
+.feature-stack-gallery > img:first-child,
+.feature-stack-gallery > figure:first-child {
   grid-column: 1 / -1;
   width: min(100%, 92%);
   justify-self: center;
@@ -1375,6 +1402,121 @@ a {
   justify-self: center;
 }
 
+.flower-vessel-gallery > figure:not(:first-child) {
+  width: min(100%, 78%);
+  justify-self: center;
+}
+
+.flower-vessel-gallery > figure:not(:first-child) img {
+  width: 100%;
+}
+
+.gaze-after-stack {
+  display: grid;
+  gap: 34px;
+}
+
+.gaze-after-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+  align-items: start;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.12);
+}
+
+.gaze-after-card:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.gaze-after-card figure {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.gaze-after-card img {
+  display: block;
+  width: min(100%, 620px);
+  height: auto;
+  max-height: none;
+  justify-self: center;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f4f0e8;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.gaze-after-card:first-child img {
+  width: min(100%, 560px);
+}
+
+.gaze-after-card figcaption {
+  max-width: 860px;
+  justify-self: center;
+  color: rgba(244, 240, 232, 0.62);
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.gaze-after-body {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  max-width: 320px;
+  justify-self: stretch;
+  width: 100%;
+}
+
+.gaze-after-body h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.gaze-after-body dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px 16px;
+  margin: 0;
+  padding-block: 14px;
+  border-block: 1px solid rgba(244, 240, 232, 0.12);
+}
+
+.gaze-after-body dt {
+  color: rgba(244, 240, 232, 0.46);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.gaze-after-body dd {
+  margin: 3px 0 0;
+  color: rgba(244, 240, 232, 0.78);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.silent-resonator-gallery img {
+  object-fit: contain;
+}
+
+.silent-resonator-gallery > figure:first-child {
+  width: min(100%, 90%);
+}
+
+.silent-resonator-gallery > figure:not(:first-child) {
+  width: min(100%, 82%);
+  justify-self: center;
+}
+
+.silent-resonator-gallery > figure:not(:first-child) img {
+  width: 100%;
+}
+
 .tree-spirit-dance-gallery {
   grid-template-columns: 1fr;
   align-items: center;
@@ -1386,11 +1528,13 @@ a {
   justify-self: center;
 }
 
-.tree-spirit-dance-gallery img:first-child {
+.tree-spirit-dance-gallery img:first-child,
+.tree-spirit-dance-gallery > figure:first-child img {
   width: min(100%, 1100px);
 }
 
-.tree-spirit-dance-gallery img:nth-child(2) {
+.tree-spirit-dance-gallery img:nth-child(2),
+.tree-spirit-dance-gallery > figure:nth-child(2) img {
   width: min(100%, 760px);
 }
 
@@ -1420,8 +1564,12 @@ a {
   width: min(100%, 820px);
 }
 
-.returning-gaze-gallery img:nth-child(3) {
+.returning-gaze-gallery img:nth-child(3),
+.returning-gaze-gallery > figure:nth-child(3) {
   justify-self: center;
+}
+
+.returning-gaze-gallery > figure:nth-child(3) img {
   object-fit: contain;
 }
 
@@ -1447,9 +1595,18 @@ a {
   object-fit: contain;
 }
 
-.eight-earth-deities-gallery img:nth-child(2) {
+.eight-earth-deities-gallery img:nth-child(2),
+.eight-earth-deities-gallery > figure:nth-child(2) {
   width: min(94%, 900px);
   justify-self: center;
+}
+
+.eight-earth-deities-gallery > figure:nth-child(2) img {
+  width: 100%;
+}
+
+.eight-earth-deities-gallery img:nth-child(2),
+.eight-earth-deities-gallery > figure:nth-child(2) img {
   filter: brightness(0.98) contrast(0.98) saturate(1.08);
 }
 
@@ -1578,8 +1735,11 @@ a {
 }
 
 .memory-pillar-gallery img:first-child,
+.memory-pillar-gallery > figure:first-child,
 .distant-standing-gallery img:first-child,
-.compound-body-gallery img:first-child {
+.distant-standing-gallery > figure:first-child,
+.compound-body-gallery img:first-child,
+.compound-body-gallery > figure:first-child {
   grid-column: 1 / -1;
 }
 
@@ -1816,6 +1976,19 @@ a {
     grid-template-rows: auto 1fr;
   }
 
+  .gaze-after-body dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gaze-after-card {
+    grid-template-columns: 1fr;
+  }
+
+  .gaze-after-body {
+    max-width: 860px;
+    justify-self: center;
+  }
+
   .site-header {
     padding: 18px 5vw;
   }
@@ -1895,6 +2068,10 @@ a {
   .curation-card > img,
   .curation-card-large > img {
     aspect-ratio: 4 / 4.8;
+  }
+
+  .gaze-after-body dl {
+    grid-template-columns: 1fr;
   }
 
   .curation-card-body {
