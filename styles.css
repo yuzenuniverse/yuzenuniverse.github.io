@@ -1393,6 +1393,14 @@ a {
   line-height: 1.3;
 }
 
+.life-category-head h3 span {
+  display: block;
+  margin-top: 6px;
+  color: rgba(244, 240, 232, 0.48);
+  font-size: 0.54em;
+  font-weight: 700;
+}
+
 .life-category-head + .detail-work {
   margin-top: 22px;
 }
@@ -1413,6 +1421,10 @@ a {
   margin-top: 58px;
   padding-top: 42px;
   border-top: 1px solid var(--line);
+}
+
+#visual-signal {
+  margin-bottom: 72px;
 }
 
 .detail-work-head {
@@ -1515,6 +1527,26 @@ a {
   grid-column: 1 / -1;
   width: min(100%, 92%);
   justify-self: center;
+}
+
+.solitary-bloom-gallery > figure:nth-child(2) {
+  grid-column: 1 / -1;
+  width: 100%;
+  justify-self: center;
+}
+
+.not-a-vase-gallery > figure:nth-child(3) {
+  width: min(100%, 82%);
+  justify-self: center;
+}
+
+.not-a-vase-gallery > figure:nth-child(2),
+.not-a-vase-gallery > figure:nth-child(3) {
+  align-content: end;
+}
+
+.not-a-vase-gallery > figure:nth-child(3) img {
+  width: 100%;
 }
 
 .flower-vessel-gallery img {
@@ -1794,7 +1826,7 @@ a {
 }
 
 .seen-being-card:first-child img {
-  width: min(100%, 760px);
+  width: min(100%, 680px);
 }
 
 .seen-being-card:nth-child(2) img,
@@ -1924,6 +1956,14 @@ a {
   color: var(--text);
   font-size: 22px;
   line-height: 1.25;
+}
+
+.archive-page-card h2 span {
+  display: block;
+  margin-top: 5px;
+  color: rgba(244, 240, 232, 0.48);
+  font-size: 0.58em;
+  font-weight: 700;
 }
 
 .detail-meta dl {
