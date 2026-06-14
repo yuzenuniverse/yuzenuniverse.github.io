@@ -575,7 +575,8 @@ a {
 .line-series,
 .civilization-series,
 .vessel-series,
-.space-series {
+.space-series,
+.persona-series {
   display: grid;
   justify-items: center;
   gap: 18px;
@@ -586,7 +587,8 @@ a {
 .line-figure,
 .civilization-figure,
 .vessel-figure,
-.space-figure {
+.space-figure,
+.persona-figure {
   margin: 0;
 }
 
@@ -594,7 +596,8 @@ a {
 .line-figure img,
 .civilization-figure img,
 .vessel-figure img,
-.space-figure img {
+.space-figure img,
+.persona-figure img {
   display: block;
   width: auto;
   max-width: 100%;
@@ -624,12 +627,35 @@ a {
 }
 
 .stone-series.ancient-legend-preview {
-  grid-template-columns: minmax(220px, 0.92fr) minmax(240px, 1fr) minmax(240px, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
+  max-width: 820px;
 }
 
 .stone-series .stone-figure {
   width: 100%;
+}
+
+.stone-series.ancient-legend-preview .stone-figure {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  opacity: 0;
+  pointer-events: none;
+  animation: ancientLegendCycle 15s ease-in-out infinite;
+}
+
+.stone-series.ancient-legend-preview .stone-figure:nth-child(1) {
+  opacity: 1;
+  animation-delay: 0s;
+}
+
+.stone-series.ancient-legend-preview .stone-figure:nth-child(2) {
+  animation-delay: 5s;
+}
+
+.stone-series.ancient-legend-preview .stone-figure:nth-child(3) {
+  animation-delay: 10s;
 }
 
 .stone-series .stone-figure img {
@@ -644,6 +670,33 @@ a {
 
 .stone-series .stone-note {
   grid-column: 1 / -1;
+}
+
+@keyframes ancientLegendCycle {
+  0%,
+  30% {
+    opacity: 1;
+  }
+
+  36%,
+  94% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stone-series.ancient-legend-preview .stone-figure {
+    animation: none;
+    opacity: 0;
+  }
+
+  .stone-series.ancient-legend-preview .stone-figure:first-child {
+    opacity: 1;
+  }
 }
 
 .line-art {
@@ -662,11 +715,16 @@ a {
   width: min(100%, 620px);
 }
 
+.persona-art {
+  width: min(100%, 520px);
+}
+
 .section .stone-note,
 .section .line-note,
 .section .civilization-note,
 .section .vessel-note,
-.section .space-note {
+.section .space-note,
+.section .persona-note {
   max-width: 877px;
   color: rgba(244, 240, 232, 0.68);
   font-size: 15px;
@@ -679,7 +737,8 @@ a {
 .section .line-note span,
 .section .civilization-note span,
 .section .vessel-note span,
-.section .space-note span {
+.section .space-note span,
+.section .persona-note span {
   display: block;
   margin-top: 4px;
   color: rgba(244, 240, 232, 0.42);
@@ -865,31 +924,36 @@ a {
 
 .archive-section {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 74, 18, 0.026));
+  scroll-margin-top: 96px;
+}
+
+#early-works {
+  scroll-margin-top: 112px;
 }
 
 .archive-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 34px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 30px;
 }
 
 .archive-entry {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 18px;
-  align-items: end;
-  min-height: 184px;
-  padding: 22px;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-content: space-between;
+  min-height: 164px;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.025);
 }
 
 .archive-entry h3 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   color: var(--text);
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.25;
 }
 
@@ -903,17 +967,17 @@ a {
 }
 
 .archive-entry p {
-  max-width: 360px;
+  max-width: 320px;
   color: rgba(244, 240, 232, 0.68);
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.65;
 }
 
 .archive-entry p span {
   display: block;
   margin-top: 5px;
   color: rgba(244, 240, 232, 0.42);
-  font-size: 0.82em;
+  font-size: 0.8em;
   font-weight: 600;
   line-height: 1.55;
 }
@@ -933,6 +997,10 @@ a {
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
+}
+
+.archive-enter {
+  justify-self: start;
 }
 
 .archive-enter span,
@@ -1267,6 +1335,66 @@ a {
   gap: 10px;
   max-width: 760px;
   margin-bottom: 30px;
+}
+
+.life-category-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.life-category-nav a {
+  border: 1px solid rgba(244, 240, 232, 0.16);
+  border-radius: 999px;
+  padding: 8px 14px;
+  color: rgba(244, 240, 232, 0.72);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.life-category-nav a:hover {
+  border-color: rgba(255, 154, 108, 0.42);
+  color: var(--text);
+  background: rgba(255, 154, 108, 0.08);
+}
+
+.life-category-head {
+  margin-top: 64px;
+  padding: 18px 0 8px;
+  border-top: 1px solid rgba(255, 154, 108, 0.24);
+  scroll-margin-top: 108px;
+}
+
+.persona-work-category {
+  scroll-margin-top: 108px;
+}
+
+.persona-category-list .archive-page-card {
+  align-content: start;
+}
+
+.persona-category-list .archive-enter {
+  margin-top: 2px;
+}
+
+.life-category-head p {
+  margin: 0 0 6px;
+  color: rgba(255, 154, 108, 0.72);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.life-category-head h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.life-category-head + .detail-work {
+  margin-top: 22px;
 }
 
 .detail-work,
@@ -1959,6 +2087,10 @@ a {
 }
 
 @media (max-width: 980px) {
+  .archive-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .curation-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

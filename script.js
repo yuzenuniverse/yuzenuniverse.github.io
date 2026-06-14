@@ -39,6 +39,42 @@ document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe
 const sections = [...document.querySelectorAll("main section[id]")];
 const navLinks = [...document.querySelectorAll(".site-nav a")];
 
+const scrollToEarlyWorks = () => {
+  const params = new URLSearchParams(window.location.search);
+  const shouldScroll = window.location.hash === "#early-works" || params.get("section") === "early-works";
+  if (!shouldScroll) return;
+
+  const target = document.querySelector("#early-works");
+  const header = document.querySelector(".site-header");
+  if (!target) return;
+
+  const headerOffset = header instanceof HTMLElement ? header.offsetHeight + 28 : 96;
+  const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+  window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+
+  if (params.get("section") === "early-works" && window.history.replaceState) {
+    window.history.replaceState(null, "", `${window.location.pathname}#early-works`);
+  }
+};
+
+const keepEarlyWorksInView = () => {
+  scrollToEarlyWorks();
+
+  let attempts = 0;
+  const interval = window.setInterval(() => {
+    attempts += 1;
+    scrollToEarlyWorks();
+
+    if (attempts >= 20) {
+      window.clearInterval(interval);
+    }
+  }, 250);
+};
+
+keepEarlyWorksInView();
+window.addEventListener("load", keepEarlyWorksInView);
+window.addEventListener("hashchange", keepEarlyWorksInView);
+
 const navObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
