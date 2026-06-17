@@ -1147,6 +1147,81 @@ a {
   overflow-wrap: anywhere;
 }
 
+.series-feature-video {
+  display: grid;
+  gap: 18px;
+  margin: 34px 0 58px;
+  padding: 24px;
+  border: 1px solid rgba(244, 240, 232, 0.16);
+  border-radius: 8px;
+  background: rgba(10, 10, 9, 0.5);
+}
+
+.series-feature-copy {
+  display: grid;
+  gap: 8px;
+  max-width: 760px;
+}
+
+.series-feature-label {
+  margin: 0;
+  color: var(--ember-soft);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.series-feature-label span {
+  display: block;
+  margin-top: 2px;
+  color: rgba(244, 240, 232, 0.46);
+  font-size: 0.78em;
+  font-weight: 700;
+}
+
+.series-feature-copy h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.series-feature-copy p:not(.series-feature-label) {
+  margin: 0;
+  color: rgba(244, 240, 232, 0.68);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.series-feature-video video {
+  display: block;
+  width: 100%;
+  max-height: min(76vh, 820px);
+  border: 1px solid rgba(244, 240, 232, 0.16);
+  border-radius: 8px;
+  background: #080807;
+}
+
+.series-feature-video .text-link {
+  justify-self: start;
+}
+
+.life-manifestation-page .subpage-main {
+  padding-top: 112px;
+}
+
+.life-manifestation-page .back-link {
+  margin-bottom: 18px;
+}
+
+.life-manifestation-page .detail-head {
+  margin-bottom: 18px;
+}
+
+.life-manifestation-page .series-feature-video {
+  margin-top: 18px;
+}
+
 .curation-panel {
   display: grid;
   gap: 24px;
@@ -1882,6 +1957,84 @@ a {
   font-size: 13px;
 }
 
+.visual-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.visual-signal-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid rgba(244, 240, 232, 0.14);
+  border-radius: 8px;
+  background: rgba(244, 240, 232, 0.045);
+}
+
+.visual-signal-card figure {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  background: #f4f0e8;
+}
+
+.visual-signal-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.visual-signal-body {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+}
+
+.visual-signal-body h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.visual-signal-body dl {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding-block: 14px;
+  border-block: 1px solid rgba(244, 240, 232, 0.12);
+}
+
+.visual-signal-body dl > div {
+  display: grid;
+  gap: 3px;
+}
+
+.visual-signal-body dt {
+  color: rgba(244, 240, 232, 0.46);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.visual-signal-body dd {
+  margin: 0;
+  color: rgba(244, 240, 232, 0.78);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.visual-signal-body .text-link {
+  justify-self: start;
+  min-height: 38px;
+  padding-inline: 14px;
+  font-size: 13px;
+}
+
 .ancient-legend-gallery {
   grid-template-columns: minmax(0, 0.9fr) repeat(2, minmax(0, 1fr));
   align-items: center;
@@ -2143,6 +2296,10 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .visual-signal-grid {
+    grid-template-columns: 1fr;
+  }
+
   .seen-being-card:first-child {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
@@ -2216,6 +2373,15 @@ a {
     gap: 18px;
     margin: 34px 0 48px;
     padding: 18px;
+  }
+
+  .series-feature-video {
+    margin: 28px 0 44px;
+    padding: 16px;
+  }
+
+  .series-feature-copy h2 {
+    font-size: 24px;
   }
 
   .curation-copy h2,
