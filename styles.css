@@ -1222,7 +1222,13 @@ a {
 }
 
 .life-manifestation-page .series-feature-video {
+  width: 100%;
   margin-top: 18px;
+  margin-inline: 0;
+}
+
+.life-manifestation-page .series-feature-video video {
+  max-height: min(76vh, 820px);
 }
 
 .curation-panel {
