@@ -1863,6 +1863,23 @@ a {
   justify-self: stretch;
 }
 
+.flower-chorus-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.flower-chorus-gallery > figure:first-child {
+  grid-column: 1 / -1;
+}
+
+.flower-chorus-gallery > figure:first-child img {
+  width: 100%;
+}
+
+.flower-chorus-gallery > figure:not(:first-child) img {
+  max-height: min(62vh, 680px);
+}
+
 .seen-beings-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
