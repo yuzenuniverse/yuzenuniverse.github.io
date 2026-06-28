@@ -12,10 +12,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
-<body>
-  <header class="site-header subpage-header">
-    <a class="brand" href="../index.html#top">又禎宇宙 <span class="notranslate" translate="no">Yuzen Universe</span></a>
-    <nav>
+<body class="subpage">
+  <div class="cosmos-bg" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="../index.html#home" aria-label="回到又禎宇宙首頁">
+      <img src="../assets/logo-final-web-display.webp" alt="" />
+      <span class="brand-copy"><strong>又禎宇宙</strong><em class="notranslate" translate="no">Yuzen Universe</em></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false"><span></span><span></span></button>
+    <nav class="site-nav" aria-label="主要導覽">
       <a href="../index.html#about"><strong>關於又禎</strong><em class="notranslate" translate="no">About Yuzen</em></a>
       <a href="../index.html#rift"><strong>創作理念</strong><em class="notranslate" translate="no">Creative Concept</em></a>
       <a href="../index.html#orbit"><strong>作品系列</strong><em class="notranslate" translate="no">Work Series</em></a>
