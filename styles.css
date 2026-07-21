@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -504,6 +505,65 @@ a {
   line-height: 1.45;
 }
 
+.bilingual-en {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(244, 240, 232, 0.43);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.74em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.48;
+  letter-spacing: 0;
+}
+
+h1 .bilingual-en,
+h2 .bilingual-en,
+h3 .bilingual-en,
+.curation-card-body strong .bilingual-en,
+.archive-page-card h2 .bilingual-en {
+  margin-top: 0.3rem;
+  color: rgba(244, 240, 232, 0.47);
+  font-size: 0.52em;
+  font-weight: 600;
+}
+
+.detail-intro .bilingual-en,
+.life-category-intro .bilingual-en,
+.detail-note .bilingual-en,
+figcaption .bilingual-en,
+.section .stone-note .bilingual-en,
+.section .line-note .bilingual-en,
+.section .civilization-note .bilingual-en,
+.section .vessel-note .bilingual-en,
+.section .space-note .bilingual-en,
+.section .persona-note .bilingual-en {
+  color: rgba(244, 240, 232, 0.45);
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.detail-meta dt .bilingual-en,
+.detail-meta dd .bilingual-en,
+.seen-being-body dt .bilingual-en,
+.seen-being-body dd .bilingual-en {
+  margin-top: 0.16rem;
+  color: rgba(244, 240, 232, 0.42);
+  font-size: 0.82em;
+}
+
+.text-link .bilingual-en,
+.archive-enter .bilingual-en,
+.work-enter .bilingual-en,
+.curation-nav a .bilingual-en,
+.life-category-nav a .bilingual-en {
+  margin-top: 0.12rem;
+  color: rgba(244, 240, 232, 0.52);
+  font-size: 0.72em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
 .rift-feature {
   width: min(460px, 100%);
   margin: 28px 0 0;
@@ -897,35 +957,6 @@ a {
   line-height: 1.8;
 }
 
-.creator-english {
-  display: grid;
-  gap: 8px;
-  margin-top: 10px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(244, 240, 232, 0.12);
-}
-
-.bilingual-copy .creator-bio .creator-english p {
-  color: rgba(244, 240, 232, 0.68);
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-.bilingual-copy .creator-bio .creator-english .creator-english-label {
-  color: var(--ember-soft);
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.3;
-}
-
-.bilingual-copy .creator-bio .creator-english .creator-english-label span {
-  display: block;
-  margin-top: 2px;
-  color: var(--text);
-  font-size: 22px;
-  line-height: 1.35;
-}
-
 .archive-section {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 74, 18, 0.026));
   scroll-margin-top: 96px;
@@ -1192,6 +1223,13 @@ a {
   line-height: 1.25;
 }
 
+.series-feature-copy h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1.28;
+}
+
 .series-feature-copy p:not(.series-feature-label) {
   margin: 0;
   color: rgba(244, 240, 232, 0.68);
@@ -1211,6 +1249,16 @@ a {
 
 .series-feature-video .text-link {
   justify-self: start;
+}
+
+.curation-feature-video {
+  width: 100%;
+  margin: 6px 0 0;
+  background: rgba(10, 10, 9, 0.34);
+}
+
+.curation-feature-video video {
+  max-height: min(72vh, 720px);
 }
 
 .life-manifestation-page .subpage-main {
