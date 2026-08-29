@@ -8,14 +8,106 @@
   <link rel="apple-touch-icon" href="assets/logo-final-web.png" />
   <meta property="og:image" content="assets/logo-final-web.png" />
   <meta name="twitter:image" content="assets/logo-final-web.png" />
+  <link rel="canonical" href="https://yuzenuniverse.com/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://yuzenuniverse.com/" />
+  <link rel="alternate" hreflang="en" href="https://yuzenuniverse.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuzenuniverse.com/" />
   <title>又禎宇宙 | Yuzen Universe</title>
   <meta
     name="description"
-    content="Yuzen Universe is an artistic world where hidden lives quietly emerge through lines, sculptures, and imagination."
+    content="又禎宇宙 Yuzen Universe，是藝術家鄭又禎的創作宇宙；生命在世界的痕跡、裂縫、陶土、線條、記憶與想像之間逐漸顯現。"
   />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://yuzenuniverse.com/#website",
+          "name": "又禎宇宙 | Yuzen Universe",
+          "alternateName": ["Yuzen Universe", "又禎宇宙"],
+          "url": "https://yuzenuniverse.com/",
+          "inLanguage": ["zh-Hant", "en"]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://yuzenuniverse.com/#yuzen-cheng",
+          "name": "鄭又禎",
+          "alternateName": "Yuzen Cheng",
+          "url": "https://yuzenuniverse.com/",
+          "jobTitle": "Artist",
+          "nationality": "Taiwanese",
+          "email": "mailto:yuzenuniverse@gmail.com",
+          "sameAs": ["https://www.instagram.com/yuzen.ceramics"]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://yuzenuniverse.com/#webpage",
+          "url": "https://yuzenuniverse.com/",
+          "name": "又禎宇宙 | Yuzen Universe",
+          "isPartOf": {
+            "@id": "https://yuzenuniverse.com/#website"
+          },
+          "about": {
+            "@id": "https://yuzenuniverse.com/#yuzen-universe"
+          },
+          "inLanguage": "zh-Hant"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://yuzenuniverse.com/#yuzen-universe",
+          "name": "又禎宇宙",
+          "alternateName": "Yuzen Universe",
+          "url": "https://yuzenuniverse.com/",
+          "creator": {
+            "@id": "https://yuzenuniverse.com/#yuzen-cheng"
+          },
+          "description": "又禎宇宙是一個由陶土、線條、裂縫、記憶與想像形成的創作宇宙，生命在觀看、想像與雙手之間逐漸顯現。",
+          "inLanguage": "zh-Hant"
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://yuzenuniverse.com/#work-series",
+          "name": "作品系列 / Work Series",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "生命的顯現 / Manifestation of Life",
+              "url": "https://yuzenuniverse.com/works/wood-stone-soul.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "古文明的裂生 / Ancient Civilization Reborn Through Cracks",
+              "url": "https://yuzenuniverse.com/works/ancient-civilization.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "陶與生命容器 / Ceramic Beings",
+              "url": "https://yuzenuniverse.com/works/ceramic-beings.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "人格考古學 / Archaeology of Persona",
+              "url": "https://yuzenuniverse.com/works/persona-archaeology.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "線條生成 / Line Generation",
+              "url": "https://yuzenuniverse.com/works/line-generation.html"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="home-page">
   <div class="cosmos-bg" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -38,11 +130,20 @@
       <a href="#orbit"><strong>作品系列</strong><em class="notranslate" translate="no">Work Series</em></a>
       <a href="#early-works"><strong>早期創作</strong><em class="notranslate" translate="no">Early Works</em></a>
       <a href="#contact"><strong>聯絡資訊</strong><em class="notranslate" translate="no">Contact Info</em></a>
+      <a href="en/" aria-label="English concise version"><strong>EN</strong><em class="notranslate" translate="no">English</em></a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="home">
+    <section class="hero hero-artwork-scene" id="home">
+      <img
+        class="hero-artwork"
+        src="assets/web/not-a-vase-main.webp"
+        alt="非花器陶塑作品，眼睛、開口與植物在陶土中形成生命"
+        width="1059"
+        height="1500"
+        fetchpriority="high"
+      />
       <div class="universe-stage" aria-label="又禎宇宙標誌 Yuzen Universe logo">
         <div class="logo-aura" aria-hidden="true"></div>
         <div class="orbit orbit-one" aria-hidden="true"></div>
@@ -61,24 +162,39 @@
       </div>
 
       <div class="hero-copy">
-        <p class="eyebrow reveal">
+        <h1 class="eyebrow hero-title reveal">
           世界本來就是活的。
           <span class="notranslate" translate="no">The world has always been alive.</span>
-        </p>
-        <h1 class="reveal">
-          又禎宇宙
-          <span class="notranslate" translate="no">Yuzen Universe</span>
         </h1>
         <p class="hero-text reveal">
-          那些尚未成形的生命，在看見與想像之間，逐漸顯現。
-          <span class="notranslate" translate="no">Unformed lives gradually emerge between seeing and imagination.</span>
-          <br /><br />
-          在視與不視之間，生成自己的宇宙。
-          <span class="notranslate" translate="no">Generating my own universe between seeing and not seeing.</span>
+          那些尚未成形的生命，<br />
+          在看見與想像之間，<br />
+          逐漸顯現。
+          <span class="notranslate" translate="no">Unformed lives gradually emerge<br />between seeing and imagination.</span>
         </p>
         <div class="hero-actions reveal">
-          <a class="primary-link" href="#rift"><strong>進入創作理念</strong><span class="notranslate" translate="no">Enter the concept</span></a>
-          <a class="secondary-link" href="#orbit"><strong>觀看作品系列</strong><span class="notranslate" translate="no">View work series</span></a>
+          <a class="primary-link" href="#orbit"><strong>觀看作品系列&nbsp;&rarr;</strong><span class="notranslate" translate="no">View Work Series</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <p class="section-label">00 / 名字的由來 <span class="notranslate" translate="no">The Meaning of Yuzen Universe</span></p>
+        <div class="bilingual-copy">
+          <p>
+            在視與不視之間，生成自己的宇宙。
+            <span class="bilingual-en notranslate" lang="en" translate="no">Generating my own universe between seeing and not seeing.</span>
+          </p>
+          <p>
+            Yuzen，源自創作者「又禎」的名字，也在聲音與意象中，隱約呼應「幽禪」與「悠然」——幽遠、靜謐而自由。
+          </p>
+          <p>
+            Universe，不只是宇宙，更是一個讓生命在觀看、想像與雙手之間，持續生成、逐漸顯現的世界。
+          </p>
+          <p>
+            Yuzen Universe，是又禎的宇宙，也是生命得以一次又一次重新開始的地方。
+          </p>
         </div>
       </div>
     </section>
@@ -101,7 +217,7 @@
             <figure class="about-origin-figure">
               <img
                 src="assets/web/tree-spirit-pride-ceramic.webp"
-                alt="樹精之傲，第一個從陶土中甦醒的樹精作品"
+                alt="樹精之傲陶塑作品，早期陶土生命語彙的起點"
                 width="1600"
                 height="1068"
                 loading="lazy"
@@ -153,7 +269,7 @@
           <figure class="rift-feature">
               <img
                 src="assets/web/rift-crack-vessel-selected.webp"
-                alt="裂縫陶作"
+                alt="裂縫中的陶土形體，呈現生命從開口與痕跡中生成"
                 width="859"
                 height="920"
                 loading="lazy"
@@ -181,6 +297,45 @@
       </div>
     </section>
 
+    <section class="section" id="views">
+      <div class="section-inner split">
+        <div>
+          <p class="section-label">四個生成觀 <span class="notranslate" translate="no">Four Views of Becoming</span></p>
+          <h2>
+            又禎宇宙的哲學羅盤
+            <span class="notranslate" translate="no">A Philosophical Compass for Yuzen Universe</span>
+          </h2>
+          <p class="section-subtitle">
+            又禎宇宙不是一套理論，而是一種觀看、創作與生命逐漸顯現的方式。
+            <span class="notranslate" translate="no">Yuzen Universe is not a theory, but a way of seeing, making, and allowing life to gradually emerge.</span>
+          </p>
+        </div>
+        <div class="bilingual-copy">
+          <p>
+            <span class="copy-lead">世界本來就是活的｜世界觀</span>
+            <br />
+            世界並不是藏著完整生命等待被發現，而是始終提供生命生成的可能。
+            <span class="bilingual-en notranslate" lang="en" translate="no">The World Has Always Been Alive | Worldview<br />The world does not hide complete lives waiting to be found; it continually offers possibilities for life to emerge.</span>
+            <br /><br />
+            <span class="copy-lead">創作即生命｜生命觀</span>
+            <br />
+            創作不是為了證明存在；當我創作時，我正在存在。
+            <span class="bilingual-en notranslate" lang="en" translate="no">Creation Is Life | View of Life<br />Creation is not about proving existence. When I create, I am present.</span>
+            <br /><br />
+            <span class="copy-lead">手生形現｜創作者與生成</span>
+            <br />
+            雙手先於命名行動，形體在觸覺、媒材與想像之間逐漸顯現。
+            <span class="bilingual-en notranslate" lang="en" translate="no">Form Emerges Through the Hands | The Maker and Becoming<br />The hands move before naming; form gradually appears through touch, material, and imagination.</span>
+            <br /><br />
+            <span class="copy-lead">轉視生相｜觀者與觀看</span>
+            <br />
+            作品不是在完成時停止；當觀者轉換觀看，新的生命相貌也再次生成。
+            <span class="bilingual-en notranslate" lang="en" translate="no">As Seeing Turns, Forms Arise | The Viewer and Seeing<br />A work does not stop when it is finished; as the viewer's seeing shifts, new forms of life arise again.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="section orbit-section" id="orbit">
       <div class="section-inner">
         <p class="section-label">03 / 作品系列 <span class="notranslate" translate="no">Work Series</span></p>
@@ -202,7 +357,7 @@
             <figure class="stone-figure">
               <img
                 src="assets/ancient-legend-photo.jpg"
-                alt="遠古的傳說石板照片"
+                alt="遠古的傳說石板紋理照片"
                 width="1116"
                 height="1146"
                 loading="lazy"
@@ -211,7 +366,7 @@
             <figure class="stone-figure">
               <img
                 src="assets/ancient-legend-line.jpg"
-                alt="遠古的傳說線稿"
+                alt="遠古的傳說觀看石紋後生成的線稿"
                 width="1125"
                 height="828"
                 loading="lazy"
@@ -220,7 +375,7 @@
             <figure class="stone-figure">
               <img
                 src="assets/ancient-legend-color.jpg"
-                alt="遠古的傳說彩稿"
+                alt="遠古的傳說彩色線稿"
                 width="1121"
                 height="784"
                 loading="lazy"
@@ -248,7 +403,7 @@
             <figure class="civilization-figure civilization-art">
               <img
                 src="assets/web/ancient-civilization-rift.webp"
-                alt="古文明的裂生"
+                alt="古文明的裂生陶塑作品，裂縫與陶土中的文明殘影"
                 width="758"
                 height="1120"
                 loading="lazy"
@@ -276,7 +431,7 @@
             <figure class="vessel-figure vessel-art">
               <img
                 src="assets/web/inner-form-studio-front.webp"
-                alt="心生相"
+                alt="心生相陶塑作品，閉眼、凝視與張口交疊的生命容器"
                 width="1201"
                 height="1800"
                 loading="lazy"
@@ -302,7 +457,7 @@
             <figure class="persona-figure persona-art">
               <img
                 src="assets/web/self-portrait-persona.jpg"
-                alt="人格考古學代表作品來自視界之外"
+                alt="來自視界之外陶塑作品，帶有眼睛、孔洞與張口的自我分身"
                 width="1001"
                 height="1500"
                 loading="lazy"
@@ -332,7 +487,7 @@
             <figure class="line-figure line-art">
               <img
                 src="assets/line-conscious-xuan.jpg"
-                alt="意識玄"
+                alt="意識玄線條作品，連續線中生成多重生命"
                 width="1018"
                 height="1525"
                 loading="lazy"
