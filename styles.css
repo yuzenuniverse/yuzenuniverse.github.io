@@ -18,13 +18,17 @@
 
 html {
   scroll-behavior: smooth;
+  /* clip 與 hidden 一樣擋住水平溢出，但不會把 html/body 變成捲動容器，
+     position: sticky 才不會失效。舊瀏覽器沿用前一行的 hidden。 */
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--text);
   font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", Arial, Helvetica, sans-serif;
@@ -40,9 +44,56 @@ img {
   max-width: 100%;
 }
 
+/* 鍵盤使用者跳過導覽列直接進入內文；平常收在畫面上方外，聚焦時才滑下來。 */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 24px;
+  z-index: 60;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 20px;
+  border: 1px solid var(--ember-soft);
+  border-radius: 0 0 8px 8px;
+  background: rgba(7, 7, 6, 0.97);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* main 只為了接住 skip link 的焦點，不需要畫外框 */
+main:focus {
+  outline: none;
+}
+
+.skip-link span {
+  color: rgba(244, 240, 232, 0.64);
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* 鍵盤焦點：連結全站都沒有底線，瀏覽器預設的焦點框在深色底上幾乎看不見，
+   所以明確指定一個對比足夠的外框。滑鼠點擊不會觸發 :focus-visible。 */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--ember-soft);
+  outline-offset: 3px;
 }
 
 .cosmos-bg,
@@ -61,15 +112,16 @@ a {
     linear-gradient(140deg, #050505 0%, #10100f 52%, #17120e 100%);
 }
 
+/* 星空：原本是三層「每個拼貼只有一個點」的 radial-gradient，
+   128/194/242px 的規律拼貼放大看是網格，像織紋而不像星空。
+   改成兩張各自散佈數十顆星、大小與亮度不一的 SVG 拼貼，
+   兩層尺寸互質、又各自無規律，疊起來看不出重複。 */
 .cosmos-bg::before {
   content: "";
   opacity: 0.72;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.86) 0 1px, transparent 1.4px),
-    radial-gradient(circle, rgba(255, 138, 61, 0.74) 0 1px, transparent 1.4px),
-    radial-gradient(circle, rgba(0, 157, 224, 0.62) 0 1px, transparent 1.5px);
-  background-position: 0 0, 34px 42px, 88px 18px;
-  background-size: 128px 128px, 194px 194px, 242px 242px;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22640%22%20height%3D%22640%22%3E%3Ccircle%20cx%3D%22375.3%22%20cy%3D%22454.3%22%20r%3D%220.9%22%20fill%3D%22%23009de0%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22262.4%22%20cy%3D%22154.4%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.48%22%2F%3E%3Ccircle%20cx%3D%22462.6%22%20cy%3D%22327.0%22%20r%3D%221.2%22%20fill%3D%22%23ff8a3d%22%20opacity%3D%220.45%22%2F%3E%3Ccircle%20cx%3D%22120.1%22%20cy%3D%22274.8%22%20r%3D%220.9%22%20fill%3D%22%23ff8a3d%22%20opacity%3D%220.57%22%2F%3E%3Ccircle%20cx%3D%22305.8%22%20cy%3D%22575.2%22%20r%3D%221.0%22%20fill%3D%22%23009de0%22%20opacity%3D%220.44%22%2F%3E%3Ccircle%20cx%3D%22138.8%22%20cy%3D%2294.8%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.73%22%2F%3E%3Ccircle%20cx%3D%22188.4%22%20cy%3D%22436.7%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.73%22%2F%3E%3Ccircle%20cx%3D%22334.3%22%20cy%3D%2222.8%22%20r%3D%220.7%22%20fill%3D%22%23009de0%22%20opacity%3D%220.34%22%2F%3E%3Ccircle%20cx%3D%22173.4%22%20cy%3D%22287.2%22%20r%3D%220.7%22%20fill%3D%22%23009de0%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22130.1%22%20cy%3D%22454.1%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.76%22%2F%3E%3Ccircle%20cx%3D%2215.8%22%20cy%3D%22499.6%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.67%22%2F%3E%3Ccircle%20cx%3D%22282.4%22%20cy%3D%22394.7%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22538.1%22%20cy%3D%2297.0%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.51%22%2F%3E%3Ccircle%20cx%3D%22234.3%22%20cy%3D%22270.6%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.83%22%2F%3E%3Ccircle%20cx%3D%22621.4%22%20cy%3D%22353.9%22%20r%3D%220.9%22%20fill%3D%22%23009de0%22%20opacity%3D%220.58%22%2F%3E%3Ccircle%20cx%3D%22528.4%22%20cy%3D%22604.8%22%20r%3D%220.9%22%20fill%3D%22%23fff%22%20opacity%3D%220.78%22%2F%3E%3Ccircle%20cx%3D%22539.7%22%20cy%3D%22210.5%22%20r%3D%220.7%22%20fill%3D%22%23009de0%22%20opacity%3D%220.43%22%2F%3E%3Ccircle%20cx%3D%22467.1%22%20cy%3D%22392.1%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.72%22%2F%3E%3Ccircle%20cx%3D%22455.3%22%20cy%3D%2253.0%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.56%22%2F%3E%3Ccircle%20cx%3D%22335.8%22%20cy%3D%22343.1%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.72%22%2F%3E%3Ccircle%20cx%3D%22569.1%22%20cy%3D%22457.0%22%20r%3D%220.9%22%20fill%3D%22%23009de0%22%20opacity%3D%220.4%22%2F%3E%3Ccircle%20cx%3D%22126.9%22%20cy%3D%22401.2%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.84%22%2F%3E%3Ccircle%20cx%3D%2224.5%22%20cy%3D%22187.4%22%20r%3D%220.7%22%20fill%3D%22%23009de0%22%20opacity%3D%220.52%22%2F%3E%3Ccircle%20cx%3D%22161.2%22%20cy%3D%22198.8%22%20r%3D%220.9%22%20fill%3D%22%23009de0%22%20opacity%3D%220.61%22%2F%3E%3Ccircle%20cx%3D%2270.2%22%20cy%3D%2242.9%22%20r%3D%220.9%22%20fill%3D%22%23ff8a3d%22%20opacity%3D%220.68%22%2F%3E%3Ccircle%20cx%3D%22213.5%22%20cy%3D%22546.4%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22473.5%22%20cy%3D%22612.8%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.53%22%2F%3E%3Ccircle%20cx%3D%22218.3%22%20cy%3D%2264.9%22%20r%3D%221.0%22%20fill%3D%22%23ff8a3d%22%20opacity%3D%220.53%22%2F%3E%3Ccircle%20cx%3D%22346.4%22%20cy%3D%22220.7%22%20r%3D%220.9%22%20fill%3D%22%23fff%22%20opacity%3D%220.64%22%2F%3E%3Ccircle%20cx%3D%2280.3%22%20cy%3D%22116.2%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22615.9%22%20cy%3D%22624.6%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.76%22%2F%3E%3Ccircle%20cx%3D%2277.2%22%20cy%3D%22360.3%22%20r%3D%220.9%22%20fill%3D%22%23fff%22%20opacity%3D%220.54%22%2F%3E%3Ccircle%20cx%3D%22609.1%22%20cy%3D%22201.7%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.82%22%2F%3E%3Ccircle%20cx%3D%22628.5%22%20cy%3D%22301.6%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.76%22%2F%3E%3Ccircle%20cx%3D%22480.3%22%20cy%3D%22168.9%22%20r%3D%220.9%22%20fill%3D%22%23fff%22%20opacity%3D%220.86%22%2F%3E%3Ccircle%20cx%3D%2224.1%22%20cy%3D%22406.5%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.75%22%2F%3E%3Ccircle%20cx%3D%22241.1%22%20cy%3D%22325.1%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.77%22%2F%3E%3Ccircle%20cx%3D%22552.2%22%20cy%3D%22335.3%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.83%22%2F%3E%3Ccircle%20cx%3D%22362.0%22%20cy%3D%2278.7%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.66%22%2F%3E%3Ccircle%20cx%3D%22566.2%22%20cy%3D%22561.8%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.48%22%2F%3E%3Ccircle%20cx%3D%22394.1%22%20cy%3D%22290.8%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.49%22%2F%3E%3Ccircle%20cx%3D%22407.6%22%20cy%3D%22600.6%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.74%22%2F%3E%3Ccircle%20cx%3D%22252.5%22%20cy%3D%22617.0%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.7%22%2F%3E%3Ccircle%20cx%3D%22473.8%22%20cy%3D%22225.7%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.48%22%2F%3E%3Ccircle%20cx%3D%22176.0%22%20cy%3D%22138.5%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.69%22%2F%3E%3Ccircle%20cx%3D%22253.3%22%20cy%3D%22458.6%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.76%22%2F%3E%3Ccircle%20cx%3D%2265.5%22%20cy%3D%22451.0%22%20r%3D%221.0%22%20fill%3D%22%23009de0%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22634.3%22%20cy%3D%22550.8%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.64%22%2F%3E%3Ccircle%20cx%3D%22101.8%22%20cy%3D%22628.0%22%20r%3D%220.7%22%20fill%3D%22%23009de0%22%20opacity%3D%220.39%22%2F%3E%3Ccircle%20cx%3D%2223.2%22%20cy%3D%2282.2%22%20r%3D%220.9%22%20fill%3D%22%23fff%22%20opacity%3D%220.58%22%2F%3E%3Ccircle%20cx%3D%22286.1%22%20cy%3D%2283.8%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.71%22%2F%3E%3Ccircle%20cx%3D%22323.5%22%20cy%3D%22466.6%22%20r%3D%221.2%22%20fill%3D%22%23ff8a3d%22%20opacity%3D%220.66%22%2F%3E%3Ccircle%20cx%3D%222.5%22%20cy%3D%22594.6%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.83%22%2F%3E%3Ccircle%20cx%3D%22511.0%22%20cy%3D%2214.8%22%20r%3D%221.0%22%20fill%3D%22%23fff%22%20opacity%3D%220.72%22%2F%3E%3Ccircle%20cx%3D%2243.0%22%20cy%3D%22246.1%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.57%22%2F%3E%3Ccircle%20cx%3D%22526.1%22%20cy%3D%22282.2%22%20r%3D%221.2%22%20fill%3D%22%23fff%22%20opacity%3D%220.54%22%2F%3E%3Ccircle%20cx%3D%22165.5%22%20cy%3D%22501.1%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.73%22%2F%3E%3Ccircle%20cx%3D%22397.6%22%20cy%3D%22147.5%22%20r%3D%220.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.58%22%2F%3E%3C%2Fsvg%3E"), url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22420%22%20height%3D%22420%22%3E%3Ccircle%20cx%3D%22335.6%22%20cy%3D%22136.9%22%20r%3D%221.1%22%20fill%3D%22%23fff%22%20opacity%3D%220.79%22%2F%3E%3Ccircle%20cx%3D%2248.3%22%20cy%3D%22200.0%22%20r%3D%221.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.53%22%2F%3E%3Ccircle%20cx%3D%22264.9%22%20cy%3D%22210.3%22%20r%3D%221.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22208.8%22%20cy%3D%22332.8%22%20r%3D%221.1%22%20fill%3D%22%23ff8a3d%22%20opacity%3D%220.47%22%2F%3E%3Ccircle%20cx%3D%22135.0%22%20cy%3D%2236.6%22%20r%3D%221.4%22%20fill%3D%22%23009de0%22%20opacity%3D%220.4%22%2F%3E%3Ccircle%20cx%3D%2232.0%22%20cy%3D%22352.6%22%20r%3D%221.7%22%20fill%3D%22%23fff%22%20opacity%3D%220.76%22%2F%3E%3Ccircle%20cx%3D%22356.9%22%20cy%3D%2239.9%22%20r%3D%221.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.83%22%2F%3E%3Ccircle%20cx%3D%22329.4%22%20cy%3D%22408.8%22%20r%3D%221.4%22%20fill%3D%22%23009de0%22%20opacity%3D%220.52%22%2F%3E%3Ccircle%20cx%3D%22147.6%22%20cy%3D%22222.5%22%20r%3D%221.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.56%22%2F%3E%3Ccircle%20cx%3D%22208.2%22%20cy%3D%2216.6%22%20r%3D%221.4%22%20fill%3D%22%23ff8a3d%22%20opacity%3D%220.45%22%2F%3E%3Ccircle%20cx%3D%22414.0%22%20cy%3D%22380.1%22%20r%3D%221.7%22%20fill%3D%22%23009de0%22%20opacity%3D%220.36%22%2F%3E%3Ccircle%20cx%3D%2240.0%22%20cy%3D%22125.3%22%20r%3D%221.1%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22319.5%22%20cy%3D%22317.5%22%20r%3D%221.1%22%20fill%3D%22%23fff%22%20opacity%3D%220.57%22%2F%3E%3Ccircle%20cx%3D%22100.5%22%20cy%3D%2288.2%22%20r%3D%221.1%22%20fill%3D%22%23fff%22%20opacity%3D%220.54%22%2F%3E%3Ccircle%20cx%3D%22159.2%22%20cy%3D%22412.2%22%20r%3D%221.7%22%20fill%3D%22%23ff8a3d%22%20opacity%3D%220.57%22%2F%3E%3Ccircle%20cx%3D%22112.5%22%20cy%3D%22352.5%22%20r%3D%221.1%22%20fill%3D%22%23009de0%22%20opacity%3D%220.51%22%2F%3E%3Ccircle%20cx%3D%22190.6%22%20cy%3D%2279.4%22%20r%3D%221.7%22%20fill%3D%22%23009de0%22%20opacity%3D%220.36%22%2F%3E%3Ccircle%20cx%3D%227.9%22%20cy%3D%2259.4%22%20r%3D%221.1%22%20fill%3D%22%23fff%22%20opacity%3D%220.67%22%2F%3E%3Ccircle%20cx%3D%2269.4%22%20cy%3D%22399.6%22%20r%3D%221.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.65%22%2F%3E%3C%2Fsvg%3E");
+  background-position: 0 0, 137px 211px;
+  background-size: 640px 640px, 420px 420px;
 }
 
 .cosmos-bg::after {
@@ -94,7 +146,17 @@ a {
   color: var(--text);
   background: rgba(7, 7, 6, 0.68);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
+  transition: background 240ms ease, border-color 240ms ease;
+}
+
+/* 捲離首屏後把頁首壓實，否則底下的內文會透出來跟導覽列疊在一起。
+   Safari 沒有 backdrop-filter 前綴時更需要這層不透明度。 */
+.site-header.is-scrolled,
+.home-page .site-header.is-scrolled {
+  background: rgba(7, 7, 6, 0.93);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
 }
 
 .home-page .site-header {
@@ -160,7 +222,7 @@ a {
 }
 
 .site-nav em {
-  color: rgba(244, 240, 232, 0.48);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 11px;
   font-style: normal;
 }
@@ -249,8 +311,8 @@ a {
   max-width: none;
   object-fit: cover;
   object-position: 50% 46%;
-  opacity: 0.82;
-  filter: brightness(0.72) contrast(1.04) saturate(0.92);
+  opacity: 0.9;
+  filter: brightness(0.86) contrast(1.02) saturate(0.96);
   pointer-events: none;
 }
 
@@ -281,6 +343,10 @@ a {
     radial-gradient(ellipse at 64% 46%, rgba(32, 36, 42, 0.5), rgba(18, 19, 19, 0.34) 48%, rgba(13, 17, 24, 0.14) 68%, transparent 86%),
     radial-gradient(ellipse at 78% 28%, rgba(255, 138, 61, 0.08), transparent 62%),
     linear-gradient(270deg, rgba(13, 17, 24, 0.42), rgba(18, 19, 19, 0.24) 58%, transparent 100%);
+  /* 上面第三層是水平漸層，只有左右淡出，上緣、下緣與右緣是硬切——
+     疊在作品照片上會露出一塊看得見的長方形。用遮罩讓四邊都羽化。 */
+  -webkit-mask-image: radial-gradient(ellipse 76% 80% at 60% 50%, #000 38%, rgba(0, 0, 0, 0.55) 70%, transparent 100%);
+  mask-image: radial-gradient(ellipse 76% 80% at 60% 50%, #000 38%, rgba(0, 0, 0, 0.55) 70%, transparent 100%);
 }
 
 .universe-stage {
@@ -430,6 +496,86 @@ a {
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.22);
 }
 
+/* 首屏佔滿整個視窗，底部又是漸暗的，訪客不一定知道下面還有內容。 */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: auto;
+  min-width: 96px;
+  padding: 10px 16px 12px;
+  margin-left: -60px;
+  border: 1px solid rgba(244, 240, 232, 0.4);
+  border-radius: 999px;
+  background: rgba(7, 7, 6, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.scroll-cue-label {
+  color: rgba(244, 240, 232, 0.86);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.scroll-cue-label span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(244, 240, 232, 0.6);
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.scroll-cue-arrow {
+  width: 11px;
+  height: 11px;
+  border-right: 2px solid rgba(244, 240, 232, 0.92);
+  border-bottom: 2px solid rgba(244, 240, 232, 0.92);
+  transform: translateY(-3px) rotate(45deg);
+  animation: scroll-cue-bob 2.4s ease-in-out infinite;
+}
+
+.scroll-cue:hover {
+  border-color: var(--ember-soft);
+  background: rgba(255, 138, 61, 0.1);
+}
+
+.scroll-cue:hover .scroll-cue-arrow {
+  border-color: var(--ember-soft);
+}
+
+.scroll-cue:hover .scroll-cue-label {
+  color: var(--ember-soft);
+}
+
+@keyframes scroll-cue-bob {
+  0%,
+  100% {
+    transform: translateY(-5px) rotate(45deg);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(1px) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-arrow {
+    animation: none;
+    opacity: 0.9;
+  }
+}
+
 .hero-copy {
   min-width: 0;
   max-width: 600px;
@@ -453,7 +599,7 @@ a {
 .section-label span {
   display: block;
   margin-top: 4px;
-  color: rgba(244, 240, 232, 0.52);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.58em;
   font-weight: 700;
 }
@@ -474,7 +620,7 @@ a {
 .hero h1 span {
   display: block;
   margin-top: 12px;
-  color: rgba(244, 240, 232, 0.5);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.3em;
   font-weight: 700;
   line-height: 1.2;
@@ -502,18 +648,30 @@ a {
 .section h2 span {
   display: block;
   margin-top: 10px;
-  color: rgba(244, 240, 232, 0.5);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.42em;
   font-weight: 700;
   line-height: 1.2;
 }
 
+/* 首屏署名。原本 26px 的 ember 色會跟橘色標題搶注意力，
+   改成細一階、亮度略低的白，讓它像落款而不是第二個標題。 */
 .hero-name {
-  margin: 12px 0 0;
-  color: var(--ember-soft);
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1.25;
+  margin: 26px 0 0;
+  color: rgba(244, 240, 232, 0.86);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+
+.hero-name span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(244, 240, 232, 0.6);
+  font-size: 0.68em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
 
 .hero-text {
@@ -545,7 +703,7 @@ a {
 .hero-text span {
   display: block;
   margin-top: 8px;
-  color: rgba(244, 240, 232, 0.48);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.78em;
   line-height: 1.55;
 }
@@ -688,6 +846,17 @@ a {
   align-items: start;
 }
 
+/* 這幾節左欄只有標題、右欄很長，桌機上左半邊會空一大片。
+   讓左欄跟著捲動停在視窗上緣，留白就變成有意義的呼吸空間。 */
+@media (min-width: 981px) {
+  .about-section .split > div:first-child,
+  #views .split > div:first-child,
+  .archive-section .split > div:first-child {
+    position: sticky;
+    top: 118px;
+  }
+}
+
 .section h2 {
   margin: 0;
   max-width: 620px;
@@ -718,7 +887,7 @@ a {
 .section .section-subtitle span {
   display: block;
   margin-top: 3px;
-  color: rgba(244, 240, 232, 0.42);
+  color: rgba(244, 240, 232, 0.6);
   font-size: 0.78em;
   font-weight: 600;
   line-height: 1.45;
@@ -727,7 +896,7 @@ a {
 .bilingual-en {
   display: block;
   margin-top: 0.35rem;
-  color: rgba(244, 240, 232, 0.43);
+  color: rgba(244, 240, 232, 0.6);
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   font-size: 0.74em;
   font-style: normal;
@@ -742,7 +911,7 @@ h3 .bilingual-en,
 .curation-card-body strong .bilingual-en,
 .archive-page-card h2 .bilingual-en {
   margin-top: 0.3rem;
-  color: rgba(244, 240, 232, 0.47);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.52em;
   font-weight: 600;
 }
@@ -757,7 +926,7 @@ figcaption .bilingual-en,
 .section .vessel-note .bilingual-en,
 .section .space-note .bilingual-en,
 .section .persona-note .bilingual-en {
-  color: rgba(244, 240, 232, 0.45);
+  color: rgba(244, 240, 232, 0.6);
   font-size: 0.8em;
   font-weight: 500;
 }
@@ -767,7 +936,7 @@ figcaption .bilingual-en,
 .seen-being-body dt .bilingual-en,
 .seen-being-body dd .bilingual-en {
   margin-top: 0.16rem;
-  color: rgba(244, 240, 232, 0.42);
+  color: rgba(244, 240, 232, 0.6);
   font-size: 0.82em;
 }
 
@@ -777,7 +946,7 @@ figcaption .bilingual-en,
 .curation-nav a .bilingual-en,
 .life-category-nav a .bilingual-en {
   margin-top: 0.12rem;
-  color: rgba(244, 240, 232, 0.52);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.72em;
   font-weight: 600;
   line-height: 1.25;
@@ -810,9 +979,19 @@ figcaption .bilingual-en,
 .rift-feature figcaption span {
   display: block;
   margin-top: 4px;
-  color: rgba(244, 240, 232, 0.42);
+  color: rgba(244, 240, 232, 0.6);
   font-size: 0.78em;
   font-weight: 600;
+}
+
+/* 原本文字受 .section-subtitle 的 540px 限制擠在左半邊，圖片卻在 1120px 裡置中，
+   視線在左對齊與置中之間跳。把整節收成同一個欄寬，軸線就統一了。 */
+.orbit-section .section-inner {
+  width: min(860px, 100%);
+}
+
+.orbit-section .section-subtitle {
+  max-width: none;
 }
 
 .orbit-subsection {
@@ -840,7 +1019,7 @@ figcaption .bilingual-en,
 .series-marker span {
   display: block;
   margin-top: 2px;
-  color: rgba(244, 240, 232, 0.45);
+  color: rgba(244, 240, 232, 0.6);
   font-size: 0.72em;
   font-weight: 700;
 }
@@ -848,7 +1027,7 @@ figcaption .bilingual-en,
 .orbit-subsection h3 span {
   display: block;
   margin-top: 8px;
-  color: rgba(244, 240, 232, 0.5);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.42em;
   font-weight: 700;
   line-height: 1.2;
@@ -925,11 +1104,12 @@ figcaption .bilingual-en,
   justify-self: center;
   opacity: 0;
   pointer-events: none;
-  animation: ancientLegendCycle 15s ease-in-out infinite;
+  /* backwards：延遲期間就套用 0% 的 opacity: 0，
+     否則第 2、3 張會在輪到自己時直接跳出來而不是淡入。 */
+  animation: ancientLegendCycle 15s ease-in-out infinite backwards;
 }
 
 .stone-series.ancient-legend-preview .stone-figure:nth-child(1) {
-  opacity: 1;
   animation-delay: 0s;
 }
 
@@ -956,18 +1136,18 @@ figcaption .bilingual-en,
 }
 
 @keyframes ancientLegendCycle {
-  0%,
+  0% {
+    opacity: 0;
+  }
+
+  3%,
   30% {
     opacity: 1;
   }
 
   36%,
-  94% {
-    opacity: 0;
-  }
-
   100% {
-    opacity: 1;
+    opacity: 0;
   }
 }
 
@@ -1024,7 +1204,7 @@ figcaption .bilingual-en,
 .section .persona-note span {
   display: block;
   margin-top: 4px;
-  color: rgba(244, 240, 232, 0.42);
+  color: rgba(244, 240, 232, 0.6);
   font-size: 0.78em;
   font-weight: 600;
 }
@@ -1049,11 +1229,27 @@ figcaption .bilingual-en,
   line-height: 1.45;
 }
 
-.bilingual-copy p + p,
-.contact-panel p + p {
-  color: rgba(244, 240, 232, 0.48);
+/* 只淡化「整段都是英文」的段落：這種段落的唯一子元素是一個單純的
+   .notranslate span（.bilingual-en 是中文段落裡的行內英譯，要排除）。
+   原本的 `p + p` 會把第二段以後的所有段落都調暗，導致「00 名字的由來」
+   等整段中文內容被一起壓暗。 */
+.bilingual-copy > p > span.notranslate:only-child:not(.bilingual-en),
+.contact-panel > p > span.notranslate:only-child:not(.bilingual-en) {
+  display: block;
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.9em;
   line-height: 1.7;
+}
+
+/* 四個生成觀改成四個獨立段落後，需要比一般段落更大的間距，
+   標題也各自獨立成行。 */
+.views-list {
+  gap: 30px;
+}
+
+.views-list .copy-lead {
+  display: block;
+  margin-bottom: 2px;
 }
 
 .about-origin {
@@ -1100,7 +1296,7 @@ figcaption .bilingual-en,
 .section .about-origin-kicker span {
   display: inline;
   margin-left: 6px;
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.82em;
   font-weight: 700;
 }
@@ -1120,7 +1316,7 @@ figcaption .bilingual-en,
 }
 
 .bilingual-copy .about-origin-copy .about-origin-english {
-  color: rgba(244, 240, 232, 0.5);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 14px;
   line-height: 1.75;
 }
@@ -1134,6 +1330,54 @@ figcaption .bilingual-en,
   margin-bottom: 4px;
   color: rgba(244, 240, 232, 0.68);
   font-weight: 800;
+}
+
+/* 英文頁的藝術家事實欄：策展人、藝廊第一眼要找的資訊，
+   用定義列表而不是散文，方便快速掃讀。 */
+.artist-facts {
+  display: grid;
+  gap: 14px;
+  margin: 26px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(244, 240, 232, 0.16);
+}
+
+.artist-facts > div {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 4px 18px;
+  align-items: baseline;
+}
+
+.artist-facts dt {
+  color: var(--ember-soft);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.artist-facts dd {
+  margin: 0;
+  color: rgba(244, 240, 232, 0.82);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.bilingual-note {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-left: 2px solid rgba(255, 138, 61, 0.55);
+  color: rgba(244, 240, 232, 0.7);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+@media (max-width: 680px) {
+  .artist-facts > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
 }
 
 .creator-profile {
@@ -1152,7 +1396,7 @@ figcaption .bilingual-en,
 .section .creator-label span {
   display: block;
   margin-top: 2px;
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.78em;
   font-weight: 700;
 }
@@ -1214,8 +1458,9 @@ figcaption .bilingual-en,
 .archive-entry h3 span {
   display: block;
   margin-top: 6px;
-  color: rgba(244, 240, 232, 0.44);
-  font-size: 0.46em;
+  color: rgba(244, 240, 232, 0.6);
+  /* 原本 0.46em 只有 10.1px，太小 */
+  font-size: 0.54em;
   font-weight: 700;
   line-height: 1.25;
 }
@@ -1230,7 +1475,7 @@ figcaption .bilingual-en,
 .archive-entry p span {
   display: block;
   margin-top: 5px;
-  color: rgba(244, 240, 232, 0.42);
+  color: rgba(244, 240, 232, 0.6);
   font-size: 0.8em;
   font-weight: 600;
   line-height: 1.55;
@@ -1259,8 +1504,9 @@ figcaption .bilingual-en,
 
 .archive-enter span,
 .work-enter span {
-  color: rgba(244, 240, 232, 0.48);
-  font-size: 0.72em;
+  color: rgba(244, 240, 232, 0.62);
+  /* 原本 0.72em 只有 10.1px，太小 */
+  font-size: 0.82em;
   line-height: 1.2;
 }
 
@@ -1294,7 +1540,7 @@ figcaption .bilingual-en,
 .contact-intents span {
   display: block;
   margin-top: 8px;
-  color: rgba(244, 240, 232, 0.5);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.42em;
   font-weight: 700;
   line-height: 1.2;
@@ -1313,13 +1559,19 @@ figcaption .bilingual-en,
   line-height: 1.7;
 }
 
+/* 三行聯絡方式原本長得一模一樣，看不出哪些可以點。 */
 .contact-methods a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 138, 61, 0.55);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
 }
 
 .contact-methods a:hover {
   color: var(--ember-soft);
+  text-decoration-color: var(--ember-soft);
 }
 
 .subpage-main {
@@ -1334,7 +1586,10 @@ figcaption .bilingual-en,
 
 .back-link {
   display: inline-flex;
-  align-items: center;
+  /* 同 .text-link：少了 column，英譯會與中文黏成
+     「回到作品系列Back to Work Series」。這顆返回鍵出現在全部 13 個內頁的左上角。 */
+  flex-direction: column;
+  align-items: flex-start;
   min-height: 40px;
   margin-bottom: 28px;
   color: rgba(244, 240, 232, 0.66);
@@ -1363,7 +1618,7 @@ figcaption .bilingual-en,
 .detail-label span {
   display: block;
   margin-top: 4px;
-  color: rgba(244, 240, 232, 0.5);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.84em;
 }
 
@@ -1377,7 +1632,7 @@ figcaption .bilingual-en,
 .detail-head h1 span {
   display: block;
   margin-top: 8px;
-  color: rgba(244, 240, 232, 0.5);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.34em;
   font-weight: 700;
 }
@@ -1395,7 +1650,7 @@ figcaption .bilingual-en,
   display: block;
   max-width: 100%;
   margin-top: 6px;
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.82em;
   font-weight: 600;
   overflow-wrap: anywhere;
@@ -1430,7 +1685,7 @@ figcaption .bilingual-en,
 .series-feature-label span {
   display: block;
   margin-top: 2px;
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.78em;
   font-weight: 700;
 }
@@ -1532,7 +1787,7 @@ figcaption .bilingual-en,
 .curation-kicker span {
   display: block;
   margin-top: 2px;
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.78em;
   font-weight: 700;
 }
@@ -1561,6 +1816,7 @@ figcaption .bilingual-en,
 
 .curation-nav a {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   min-height: 38px;
   padding: 7px 14px;
@@ -1700,6 +1956,10 @@ figcaption .bilingual-en,
 }
 
 .life-category-nav a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(244, 240, 232, 0.16);
   border-radius: 999px;
   padding: 8px 14px;
@@ -1761,7 +2021,7 @@ figcaption .bilingual-en,
 .life-category-head h3 span {
   display: block;
   margin-top: 6px;
-  color: rgba(244, 240, 232, 0.48);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.54em;
   font-weight: 700;
 }
@@ -1829,7 +2089,7 @@ figcaption .bilingual-en,
 .detail-work-head h2 span {
   display: block;
   margin-top: 6px;
-  color: rgba(244, 240, 232, 0.5);
+  color: rgba(244, 240, 232, 0.64);
   font-size: 0.48em;
   font-weight: 700;
 }
@@ -1866,12 +2126,25 @@ figcaption .bilingual-en,
   justify-self: stretch;
 }
 
-.detail-gallery-images > figure > figcaption,
-.seen-being-card figure figcaption {
+.detail-gallery-images > figure > figcaption {
   color: rgba(244, 240, 232, 0.62);
   font-size: 14px;
   line-height: 1.7;
   text-align: center;
+}
+
+/* 這個 figcaption 是在 .seen-being-card 的奶油底（#f4f0e8）上，不是深色頁面上。
+   原本沿用深底用的淺色字，等於淺字疊淺底（對比 1.05:1），三段說明完全看不見。 */
+.seen-being-card figure figcaption {
+  padding: 0 18px 16px;
+  color: #4a443b;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.seen-being-card figure figcaption .bilingual-en {
+  color: rgba(74, 68, 59, 0.78);
 }
 
 .detail-gallery-images {
@@ -2076,7 +2349,7 @@ figcaption .bilingual-en,
 }
 
 .gaze-after-body dt {
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 11px;
   font-weight: 700;
 }
@@ -2308,7 +2581,7 @@ figcaption .bilingual-en,
 }
 
 .seen-being-body dt {
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 11px;
   font-weight: 700;
 }
@@ -2386,7 +2659,7 @@ figcaption .bilingual-en,
 }
 
 .visual-signal-body dt {
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 11px;
   font-weight: 700;
 }
@@ -2460,6 +2733,93 @@ figcaption .bilingual-en,
   }
 }
 
+/* 輪播的圓點指示與播放/暫停鍵（由 script.js 動態插入）。
+   原本輪播沒有任何指示，訪客不知道還有其他張，也無法停下來。 */
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.slideshow-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid rgba(244, 240, 232, 0.55);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.slideshow-dot:hover {
+  border-color: var(--ember-soft);
+}
+
+.slideshow-dot.is-current {
+  border-color: var(--ember-soft);
+  background: var(--ember-soft);
+  transform: scale(1.18);
+}
+
+.slideshow-toggle {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-left: 6px;
+  padding: 0;
+  border: 1px solid rgba(244, 240, 232, 0.4);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.slideshow-toggle:hover {
+  border-color: var(--ember-soft);
+  color: var(--ember-soft);
+}
+
+/* 播放中顯示「暫停」兩條豎線；暫停時顯示「播放」三角形 */
+.slideshow-toggle::before,
+.slideshow-toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slideshow-toggle.is-playing::before {
+  width: 2px;
+  height: 9px;
+  margin-left: -3px;
+  background: currentColor;
+}
+
+.slideshow-toggle.is-playing::after {
+  width: 2px;
+  height: 9px;
+  margin-left: 3px;
+  background: currentColor;
+}
+
+.slideshow-toggle:not(.is-playing)::before {
+  margin-left: 1px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slideshow-dot {
+    transition: none;
+  }
+}
+
 .detail-figure figcaption {
   color: rgba(244, 240, 232, 0.62);
   font-size: 14px;
@@ -2473,6 +2833,17 @@ figcaption .bilingual-en,
   padding-top: 2px;
 }
 
+/* 作品資訊欄比左邊的照片短很多（ceramic-beings 有 9 個區塊留白超過 300px、
+   最多達 961px）。讓它跟著捲動，看每一張照片時都還看得到作品名稱、年份與尺寸。
+   欄位若比視窗高，sticky 自然失效，不會有副作用。 */
+@media (min-width: 981px) {
+  .detail-grid > .detail-meta {
+    position: sticky;
+    top: 118px;
+    align-self: start;
+  }
+}
+
 .detail-meta h2,
 .archive-page-card h2 {
   margin: 0;
@@ -2484,7 +2855,7 @@ figcaption .bilingual-en,
 .archive-page-card h2 span {
   display: block;
   margin-top: 5px;
-  color: rgba(244, 240, 232, 0.48);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 0.58em;
   font-weight: 700;
 }
@@ -2503,7 +2874,7 @@ figcaption .bilingual-en,
 }
 
 .detail-meta dt {
-  color: rgba(244, 240, 232, 0.46);
+  color: rgba(244, 240, 232, 0.62);
   font-size: 12px;
   font-weight: 700;
 }
@@ -2532,6 +2903,9 @@ figcaption .bilingual-en,
 
 .text-link {
   display: inline-flex;
+  /* 與 .work-enter / .archive-enter 一致：中文一行、英譯一行。
+     少了 column，英譯會變成同列的 flex item 與中文黏在一起。 */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 42px;
@@ -2587,14 +2961,17 @@ figcaption .bilingual-en,
 }
 
 .site-footer em {
-  color: rgba(244, 240, 232, 0.48);
+  color: rgba(244, 240, 232, 0.62);
   font-style: normal;
 }
 
+/* 原本 .reveal 與 .reveal.is-visible 的值完全相同，
+   script.js 的 IntersectionObserver 等於空轉。補上真正的進場動畫。
+   （無 JS 時由各頁 <noscript> 內的樣式還原成可見。） */
 .reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 520ms ease, transform 520ms ease;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 620ms ease, transform 620ms ease;
 }
 
 .reveal.is-visible {
@@ -2715,13 +3092,17 @@ figcaption .bilingual-en,
     border-radius: 8px;
     background: rgba(7, 7, 6, 0.92);
     opacity: 0;
+    /* visibility 讓選單收起時真的離開無障礙樹，
+       否則鍵盤 Tab 會跑進看不見的連結裡。 */
+    visibility: hidden;
     pointer-events: none;
     transform: translateY(-8px);
-    transition: opacity 180ms ease, transform 180ms ease;
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
   }
 
   .site-nav.is-open {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
   }

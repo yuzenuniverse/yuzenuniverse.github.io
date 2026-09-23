@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-Hant" translate="no" class="notranslate">
+<!-- 頁面層級不再標 translate="no"：那會讓 Chrome 連「翻譯此頁」都不提供，
+     外國訪客看不懂中文也無法翻譯。英文片段各自帶 translate="no"，
+     翻譯時會被保留原文。 -->
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google" content="notranslate" />
-  <link rel="icon" type="image/png" href="assets/logo-final-web.png" />
-  <link rel="apple-touch-icon" href="assets/logo-final-web.png" />
-  <meta property="og:image" content="assets/logo-final-web.png" />
-  <meta name="twitter:image" content="assets/logo-final-web.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png" />
   <link rel="canonical" href="https://yuzenuniverse.com/" />
   <link rel="alternate" hreflang="zh-Hant" href="https://yuzenuniverse.com/" />
   <link rel="alternate" hreflang="en" href="https://yuzenuniverse.com/en/" />
@@ -17,6 +17,35 @@
     name="description"
     content="又禎宇宙 Yuzen Universe，是藝術家鄭又禎的創作宇宙；生命在世界的痕跡、裂縫、陶土、線條、記憶與想像之間逐漸顯現。"
   />
+  <meta name="author" content="鄭又禎 Yuzen Cheng" />
+  <meta name="theme-color" content="#070706" />
+
+  <!-- 分享預覽（Facebook / LINE / Threads / Messenger 等）。
+       圖片必須是絕對網址，爬蟲不會解析相對路徑。 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="又禎宇宙 Yuzen Universe" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:url" content="https://yuzenuniverse.com/" />
+  <meta property="og:title" content="又禎宇宙 | Yuzen Universe" />
+  <meta
+    property="og:description"
+    content="藝術家鄭又禎的創作宇宙。生命在世界的痕跡、裂縫、陶土、線條、記憶與想像之間逐漸顯現。"
+  />
+  <meta property="og:image" content="https://yuzenuniverse.com/assets/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="又禎宇宙 Yuzen Universe：裂縫中的陶塑作品與「世界本來就是活的。」" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="又禎宇宙 | Yuzen Universe" />
+  <meta
+    name="twitter:description"
+    content="藝術家鄭又禎的創作宇宙。生命在世界的痕跡、裂縫、陶土、線條、記憶與想像之間逐漸顯現。"
+  />
+  <meta name="twitter:image" content="https://yuzenuniverse.com/assets/og-cover.jpg" />
+  <meta name="twitter:image:alt" content="又禎宇宙 Yuzen Universe：裂縫中的陶塑作品與「世界本來就是活的。」" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -38,7 +67,10 @@
           "jobTitle": "Artist",
           "nationality": "Taiwanese",
           "email": "mailto:yuzenuniverse@gmail.com",
-          "sameAs": ["https://www.instagram.com/yuzen.ceramics"]
+          "sameAs": [
+            "https://www.instagram.com/yuzen.ceramics",
+            "https://www.facebook.com/yuzen.ceramics"
+          ]
         },
         {
           "@type": "WebPage",
@@ -106,25 +138,50 @@
     }
   </script>
   <link rel="stylesheet" href="styles.css" />
+  <noscript>
+    <style>
+      /* 沒有 JavaScript 時的退路：漢堡鍵按不動，所以手機直接把選單攤開；
+         另外確保靠 JS 加 .is-visible 的進場元素不會永遠停在透明狀態。 */
+      .reveal { opacity: 1 !important; transform: none !important; }
+      @media (max-width: 980px) {
+        .menu-toggle { display: none !important; }
+        .site-header { flex-wrap: wrap; }
+        .site-nav {
+          position: static;
+          width: 100%;
+          padding: 6px 0 0;
+          border: 0;
+          background: none;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: none;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 2px;
+        }
+      }
+    </style>
+  </noscript>
 </head>
 <body class="home-page">
+  <a class="skip-link" href="#main">跳到主要內容 <span class="notranslate" translate="no">Skip to main content</span></a>
   <div class="cosmos-bg" aria-hidden="true"></div>
 
   <header class="site-header">
     <a class="brand" href="#home" aria-label="又禎宇宙首頁 Yuzen Universe home">
-      <img src="assets/logo-final-web-display.webp" alt="" width="512" height="512" />
+      <img src="assets/logo-header.webp" alt="" width="96" height="96" />
       <span class="brand-copy">
         <strong>又禎宇宙</strong>
         <em class="notranslate" translate="no">Yuzen Universe</em>
       </span>
     </a>
 
-    <button class="menu-toggle" type="button" aria-label="開啟選單 Open menu" aria-expanded="false">
+    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-label="開啟選單 Open menu" aria-expanded="false">
       <span></span>
       <span></span>
     </button>
 
-    <nav class="site-nav" aria-label="主要導覽 Primary navigation">
+    <nav id="site-nav" class="site-nav" aria-label="主要導覽 Primary navigation">
       <a href="#about"><strong>關於又禎</strong><em class="notranslate" translate="no">About Yuzen</em></a>
       <a href="#rift"><strong>創作理念</strong><em class="notranslate" translate="no">Creative Concept</em></a>
       <a href="#orbit"><strong>作品系列</strong><em class="notranslate" translate="no">Work Series</em></a>
@@ -134,7 +191,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
     <section class="hero hero-artwork-scene" id="home">
       <img
         class="hero-artwork"
@@ -154,10 +211,10 @@
         <span class="star-point gray-star" aria-hidden="true"></span>
         <img
           class="universe-logo"
-          src="assets/logo-final-web-display.webp"
+          src="assets/logo-universe.webp"
           alt="又禎宇宙標誌 Yuzen Universe logo"
-          width="512"
-          height="512"
+          width="320"
+          height="320"
         />
       </div>
 
@@ -172,13 +229,24 @@
           逐漸顯現。
           <span class="notranslate" translate="no">Unformed lives gradually emerge<br />between seeing and imagination.</span>
         </p>
+        <p class="hero-name reveal">
+          鄭又禎
+          <span class="notranslate" translate="no">Yuzen Cheng</span>
+        </p>
         <div class="hero-actions reveal">
           <a class="primary-link" href="#orbit"><strong>觀看作品系列&nbsp;&rarr;</strong><span class="notranslate" translate="no">View Work Series</span></a>
         </div>
       </div>
+
+      <a class="scroll-cue" href="#naming" aria-label="往下捲動，繼續閱讀 Scroll down to continue">
+        <span class="scroll-cue-label" aria-hidden="true">往下看
+          <span class="notranslate" translate="no">Scroll</span>
+        </span>
+        <span class="scroll-cue-arrow" aria-hidden="true"></span>
+      </a>
     </section>
 
-    <section class="section">
+    <section class="section" id="naming">
       <div class="section-inner">
         <p class="section-label">00 / 名字的由來 <span class="notranslate" translate="no">The Meaning of Yuzen Universe</span></p>
         <div class="bilingual-copy">
@@ -221,7 +289,9 @@
                 width="1600"
                 height="1068"
                 loading="lazy"
-              />
+        srcset="assets/web/tree-spirit-pride-ceramic-820.webp 820w, assets/web/tree-spirit-pride-ceramic.webp 1600w"
+        sizes="(max-width: 680px) 92vw, 240px"
+      />
             </figure>
             <div class="about-origin-copy">
               <p class="about-origin-kicker">
@@ -273,26 +343,28 @@
                 width="859"
                 height="920"
                 loading="lazy"
-              />
+        srcset="assets/web/rift-crack-vessel-selected-760.webp 760w, assets/web/rift-crack-vessel-selected.webp 920w"
+        sizes="(max-width: 680px) 92vw, 460px"
+      />
               <figcaption>
                 世界提供生成的可能，我參與生命逐漸成形的過程。
                 <span class="notranslate" translate="no">The world offers possibilities for life to emerge; I take part in its gradual becoming.</span>
               </figcaption>
           </figure>
         </div>
+        <!-- 改成與全站一致的「中文段落＋緊接其下的英譯」逐段對照，
+             原本是三段中文之後再接一整塊英文，英文讀者得先滑過看不懂的中文。 -->
         <div class="bilingual-copy">
           <p>
             <span class="copy-lead">世界本來就是活的。</span>
-            <br /><br />
-            我所說的「活」，不是指完整的生命早已藏在石頭、樹木或裂縫之中，等待被發現；而是世界始終蘊含著尚未被看見的生命生成可能。
-            <br /><br />
-            我在石紋、木紋、海岸、舊牆與時間留下的痕跡中，看見那些尚未成形的線索。當紋理、裂縫與形體進入我的觀看，與想像相遇，再經由雙手透過線條、陶土、木材、油彩與粉彩逐漸形象化，生命才慢慢顯現。
-            <br /><br />
-            因此，我不是單純記錄已經存在的生命，也不是憑空創造生命；我是生命生成過程的參與者。
+            <span class="bilingual-en notranslate" lang="en" translate="no">The world has always been alive.</span>
           </p>
-          <p>
-            <span class="notranslate" translate="no">The world has always been alive.<br /><br />By “alive,” I do not mean that complete beings are already hidden within stones, trees, or cracks, waiting to be discovered. Rather, the world continually holds possibilities for life that have not yet been seen or given form.<br /><br />In the patterns of stone and wood, along coastlines, on old walls, and among the traces left by time, I begin to see hints of forms not yet fully born. When these textures, cracks, and shapes enter my seeing, meet my imagination, and gradually take form through my hands—in line, clay, wood, oil, pastel, and other materials—life begins to emerge.<br /><br />I am therefore neither simply recording lives that already exist nor creating them out of nothing. I participate in the process through which life takes form.</span>
-          </p>
+          <p>我所說的「活」，不是指完整的生命早已藏在石頭、樹木或裂縫之中，等待被發現；而是世界始終蘊含著尚未被看見的生命生成可能。
+            <span class="bilingual-en notranslate" lang="en" translate="no">By “alive,” I do not mean that complete beings are already hidden within stones, trees, or cracks, waiting to be discovered. Rather, the world continually holds possibilities for life that have not yet been seen or given form.</span></p>
+          <p>我在石紋、木紋、海岸、舊牆與時間留下的痕跡中，看見那些尚未成形的線索。當紋理、裂縫與形體進入我的觀看，與想像相遇，再經由雙手透過線條、陶土、木材、油彩與粉彩逐漸形象化，生命才慢慢顯現。
+            <span class="bilingual-en notranslate" lang="en" translate="no">In the patterns of stone and wood, along coastlines, on old walls, and among the traces left by time, I begin to see hints of forms not yet fully born. When these textures, cracks, and shapes enter my seeing, meet my imagination, and gradually take form through my hands—in line, clay, wood, oil, pastel, and other materials—life begins to emerge.</span></p>
+          <p>因此，我不是單純記錄已經存在的生命，也不是憑空創造生命；我是生命生成過程的參與者。
+            <span class="bilingual-en notranslate" lang="en" translate="no">I am therefore neither simply recording lives that already exist nor creating them out of nothing. I participate in the process through which life takes form.</span></p>
         </div>
       </div>
     </section>
@@ -300,7 +372,7 @@
     <section class="section" id="views">
       <div class="section-inner split">
         <div>
-          <p class="section-label">四個生成觀 <span class="notranslate" translate="no">Four Views of Becoming</span></p>
+          <p class="section-label">03 / 四個生成觀 <span class="notranslate" translate="no">Four Views of Becoming</span></p>
           <h2>
             又禎宇宙的哲學羅盤
             <span class="notranslate" translate="no">A Philosophical Compass for Yuzen Universe</span>
@@ -310,25 +382,24 @@
             <span class="notranslate" translate="no">Yuzen Universe is not a theory, but a way of seeing, making, and allowing life to gradually emerge.</span>
           </p>
         </div>
-        <div class="bilingual-copy">
+        <div class="bilingual-copy views-list">
           <p>
             <span class="copy-lead">世界本來就是活的｜世界觀</span>
-            <br />
             世界並不是藏著完整生命等待被發現，而是始終提供生命生成的可能。
             <span class="bilingual-en notranslate" lang="en" translate="no">The World Has Always Been Alive | Worldview<br />The world does not hide complete lives waiting to be found; it continually offers possibilities for life to emerge.</span>
-            <br /><br />
+          </p>
+          <p>
             <span class="copy-lead">創作即生命｜生命觀</span>
-            <br />
             創作不是為了證明存在；當我創作時，我正在存在。
             <span class="bilingual-en notranslate" lang="en" translate="no">Creation Is Life | View of Life<br />Creation is not about proving existence. When I create, I am present.</span>
-            <br /><br />
+          </p>
+          <p>
             <span class="copy-lead">手生形現｜創作者與生成</span>
-            <br />
             雙手先於命名行動，形體在觸覺、媒材與想像之間逐漸顯現。
             <span class="bilingual-en notranslate" lang="en" translate="no">Form Emerges Through the Hands | The Maker and Becoming<br />The hands move before naming; form gradually appears through touch, material, and imagination.</span>
-            <br /><br />
+          </p>
+          <p>
             <span class="copy-lead">轉視生相｜觀者與觀看</span>
-            <br />
             作品不是在完成時停止；當觀者轉換觀看，新的生命相貌也再次生成。
             <span class="bilingual-en notranslate" lang="en" translate="no">As Seeing Turns, Forms Arise | The Viewer and Seeing<br />A work does not stop when it is finished; as the viewer's seeing shifts, new forms of life arise again.</span>
           </p>
@@ -338,7 +409,11 @@
 
     <section class="section orbit-section" id="orbit">
       <div class="section-inner">
-        <p class="section-label">03 / 作品系列 <span class="notranslate" translate="no">Work Series</span></p>
+        <p class="section-label">04 / 作品系列 <span class="notranslate" translate="no">Work Series</span></p>
+        <h2>
+          同一個宇宙的五種顯現
+          <span class="notranslate" translate="no">One Universe, Five Ways of Appearing</span>
+        </h2>
         <p class="section-subtitle">
           從世界留下的痕跡、裂縫與時間，到陶土、人格與線條，生命在不同的觀看方式與媒材之間逐漸生成。這些系列不是彼此分離的分類，而是同一個創作宇宙在不同階段留下的形態。
           <span class="notranslate" translate="no">From traces left by the world, through cracks and time, to clay, persona, and line, life gradually takes form across different ways of seeing and different materials. These series are not separate categories, but different stages through which the same creative universe continues to unfold.</span>
@@ -361,7 +436,9 @@
                 width="1116"
                 height="1146"
                 loading="lazy"
-              />
+        srcset="assets/web/ancient-legend-photo-760.webp 760w, assets/ancient-legend-photo.jpg 1116w"
+        sizes="(max-width: 680px) 92vw, 820px"
+      />
             </figure>
             <figure class="stone-figure">
               <img
@@ -370,7 +447,9 @@
                 width="1125"
                 height="828"
                 loading="lazy"
-              />
+        srcset="assets/web/ancient-legend-line-760.webp 760w, assets/ancient-legend-line.jpg 1125w"
+        sizes="(max-width: 680px) 92vw, 820px"
+      />
             </figure>
             <figure class="stone-figure">
               <img
@@ -379,7 +458,9 @@
                 width="1121"
                 height="784"
                 loading="lazy"
-              />
+        srcset="assets/web/ancient-legend-color-760.webp 760w, assets/ancient-legend-color.jpg 1121w"
+        sizes="(max-width: 680px) 92vw, 820px"
+      />
             </figure>
             <p class="stone-note">遠古的傳說：石板紋理中的線索，在觀看與線條之間逐漸成形；眼睛與面孔像遠古記號般慢慢顯現。
             <span class="bilingual-en notranslate" lang="en" translate="no">Ancient Legend: hints within the stone texture gradually take form through seeing and line; eyes and faces slowly emerge like ancient signs.</span></p>
@@ -435,7 +516,9 @@
                 width="1201"
                 height="1800"
                 loading="lazy"
-              />
+        srcset="assets/web/inner-form-studio-front-800.webp 800w, assets/web/inner-form-studio-front.webp 1201w"
+        sizes="(max-width: 680px) 92vw, 400px"
+      />
             </figure>
             <p class="vessel-note">心生相：一件由閉眼、凝視與張口交疊而成的生命容器，像內心深處長出的形相，把尚未說出的靈魂顯影出來。
             <span class="bilingual-en notranslate" lang="en" translate="no">Inner Form: a life vessel where closed eyes, gaze, and an open mouth overlap, revealing a soul that has not yet spoken.</span></p>
@@ -461,7 +544,9 @@
                 width="1001"
                 height="1500"
                 loading="lazy"
-              />
+        srcset="assets/web/self-portrait-persona-800.webp 800w, assets/web/self-portrait-persona.jpg 1001w"
+        sizes="(max-width: 680px) 92vw, 400px"
+      />
             </figure>
             <p class="persona-note">
               來自視界之外：一個從視界之外走來的自我分身，帶著眼睛、孔洞與張開的口器接收世界，也向世界發出內在的聲音。
@@ -491,7 +576,9 @@
                 width="1018"
                 height="1525"
                 loading="lazy"
-              />
+        srcset="assets/web/line-conscious-xuan-800.webp 800w, assets/line-conscious-xuan.jpg 1018w"
+        sizes="(max-width: 680px) 92vw, 400px"
+      />
             </figure>
             <p class="line-note">
               所有生命的相遇，最初都來自一個念頭
@@ -509,18 +596,17 @@
     <section class="section archive-section" id="early-works">
       <div class="section-inner split">
         <div>
-          <p class="section-label">04 / 早期創作 <span class="notranslate" translate="no">Early Works</span></p>
+          <p class="section-label">05 / 早期創作 <span class="notranslate" translate="no">Early Works</span></p>
           <h2>
             所有相遇，都留下了痕跡
-            <span class="notranslate" translate="no">Early Works</span>
+            <span class="notranslate" translate="no">Every Encounter Leaves a Trace</span>
           </h2>
         </div>
+        <!-- 原本這裡有第二段純英文，內容與上面行內英譯幾乎重複
+             （"Early works form the first strata..."），已移除。 -->
         <div class="bilingual-copy">
           <p>早期創作像整個又禎宇宙最初的地層：陶土、紙面、木材與空間在這裡第一次彼此靠近。
             <span class="bilingual-en notranslate" lang="en" translate="no">The early works are the first strata of the Yuzen Universe: clay, paper, wood, and space first come close to one another here.</span></p>
-          <p>
-            <span class="notranslate" translate="no">Early works form the first strata of Yuzen Universe, where clay, paper, wood, and space first came close.</span>
-          </p>
         </div>
       </div>
       <div class="section-inner archive-list">
@@ -616,7 +702,7 @@
 
     <section class="section contact-section" id="contact">
       <div class="section-inner contact-panel">
-        <p class="section-label">05 / 聯絡資訊 <span class="notranslate" translate="no">Contact Info</span></p>
+        <p class="section-label">06 / 聯絡資訊 <span class="notranslate" translate="no">Contact Info</span></p>
         <h2 class="contact-intents">
           展覽邀約 / 作品收藏 / 空間合作 / 訪談聯繫
           <span class="notranslate" translate="no">Exhibitions / Collecting / Spatial collaboration / Interviews</span>
@@ -629,7 +715,7 @@
             <span class="notranslate" translate="no">Instagram</span>｜<a href="https://www.instagram.com/yuzen.ceramics" target="_blank" rel="noopener">@yuzen.ceramics</a>
           </p>
           <p>
-            <span class="notranslate" translate="no">Facebook</span>｜Carol Cheng
+            <span class="notranslate" translate="no">Facebook</span>｜<a href="https://www.facebook.com/yuzen.ceramics" target="_blank" rel="noopener">Carol Cheng</a>
           </p>
         </div>
       </div>
