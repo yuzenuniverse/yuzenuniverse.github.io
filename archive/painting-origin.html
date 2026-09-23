@@ -3,24 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icon-180.png" />
   <title>畫之始 | Painting Origin | Yuzen Universe</title>
-  <meta name="description" content="畫之始回望最早的自畫像與早期繪畫，保留線條、觀看與生命形象生成的初始痕跡。" />
-  <meta property="og:image" content="../assets/logo-final-web.png" />
-  <meta name="twitter:image" content="../assets/logo-final-web.png" />
+  <meta name="description" content="畫之始 Painting Origin：回望最早的自畫像與早期繪畫，保留觀看、記號、線條與生命形象生成的初始痕跡。" />
+  <link rel="canonical" href="https://yuzenuniverse.com/archive/painting-origin.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="畫之始 | Painting Origin | Yuzen Universe" />
+  <meta property="og:description" content="回望最早的自畫像與早期繪畫，保留觀看、記號、線條與生命形象生成的初始痕跡。" />
+  <meta property="og:url" content="https://yuzenuniverse.com/archive/painting-origin.html" />
+  <meta property="og:image" content="https://yuzenuniverse.com/assets/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="畫之始 | Painting Origin | Yuzen Universe" />
+  <meta name="twitter:description" content="回望最早的自畫像與早期繪畫，保留觀看、記號、線條與生命形象生成的初始痕跡。" />
+  <meta name="twitter:image" content="https://yuzenuniverse.com/assets/og-cover.jpg" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://yuzenuniverse.com/archive/painting-origin.html#webpage",
+          "url": "https://yuzenuniverse.com/archive/painting-origin.html",
+          "name": "畫之始 | Painting Origin | Yuzen Universe",
+          "isPartOf": {
+            "@id": "https://yuzenuniverse.com/#website"
+          },
+          "about": {
+            "@id": "https://yuzenuniverse.com/archive/painting-origin.html#creative-work"
+          },
+          "inLanguage": "zh-Hant"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://yuzenuniverse.com/archive/painting-origin.html#creative-work",
+          "name": "畫之始",
+          "alternateName": "Painting Origin",
+          "url": "https://yuzenuniverse.com/archive/painting-origin.html",
+          "creator": {
+            "@id": "https://yuzenuniverse.com/#yuzen-cheng"
+          },
+          "isPartOf": {
+            "@id": "https://yuzenuniverse.com/#yuzen-universe"
+          },
+          "genre": "Early Works",
+          "description": "回望最早的自畫像與早期繪畫，保留觀看、記號、線條與生命形象生成的初始痕跡。",
+          "inLanguage": "zh-Hant"
+        }
+      ]
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
+  <noscript>
+    <style>
+      /* 沒有 JavaScript 時的退路：漢堡鍵按不動，所以手機直接把選單攤開；
+         另外確保靠 JS 加 .is-visible 的進場元素不會永遠停在透明狀態。 */
+      .reveal { opacity: 1 !important; transform: none !important; }
+      @media (max-width: 980px) {
+        .menu-toggle { display: none !important; }
+        .site-header { flex-wrap: wrap; }
+        .site-nav {
+          position: static;
+          width: 100%;
+          padding: 6px 0 0;
+          border: 0;
+          background: none;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: none;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 2px;
+        }
+      }
+    </style>
+  </noscript>
 </head>
 <body class="subpage">
+  <a class="skip-link" href="#main">跳到主要內容 <span class="notranslate" translate="no">Skip to main content</span></a>
   <div class="cosmos-bg" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="../index.html#home" aria-label="回到又禎宇宙首頁">
-      <img src="../assets/logo-final-web-display.webp" alt="" width="512" height="512" />
+      <img src="../assets/logo-header.webp" alt="" width="96" height="96" />
       <span class="brand-copy"><strong>又禎宇宙</strong><em class="notranslate" translate="no">Yuzen Universe</em></span>
     </a>
-    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false"><span></span><span></span></button>
-    <nav class="site-nav" aria-label="主要導覽">
+    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-label="開啟選單" aria-expanded="false"><span></span><span></span></button>
+    <nav id="site-nav" class="site-nav" aria-label="主要導覽">
       <a href="../index.html#about"><strong>關於又禎</strong><em class="notranslate" translate="no">About Yuzen</em></a>
       <a href="../index.html#rift"><strong>創作理念</strong><em class="notranslate" translate="no">Creative Concept</em></a>
       <a href="../index.html#orbit"><strong>作品系列</strong><em class="notranslate" translate="no">Work Series</em></a>
@@ -28,7 +99,7 @@
       <a href="../index.html#contact"><strong>聯絡資訊</strong><em class="notranslate" translate="no">Contact Info</em></a>
     </nav>
   </header>
-  <main class="subpage-main">
+  <main id="main" tabindex="-1" class="subpage-main">
     <article class="detail-shell">
       <a class="back-link" href="../index.html?section=early-works#early-works">返回早期創作
             <span class="bilingual-en notranslate" lang="en" translate="no">Back to Early Works</span></a>
