@@ -500,18 +500,20 @@ summary:focus-visible {
 .scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: 34px;
+  bottom: 30px;
   z-index: 3;
   display: grid;
   justify-items: center;
   gap: 8px;
   width: auto;
-  min-width: 96px;
-  padding: 10px 16px 12px;
-  margin-left: -60px;
-  border: 1px solid rgba(244, 240, 232, 0.4);
+  /* 底色與外框跟「觀看作品系列」看齊（16% / 52%）：
+     它只是次要提示，不該比主要按鈕還重，也不該在亮處變成一塊黑。 */
+  min-width: 84px;
+  padding: 8px 14px 10px;
+  margin-left: -52px;
+  border: 1px solid rgba(244, 240, 232, 0.52);
   border-radius: 999px;
-  background: rgba(7, 7, 6, 0.55);
+  background: rgba(7, 7, 6, 0.16);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   transition: border-color 200ms ease, background 200ms ease;
@@ -519,7 +521,7 @@ summary:focus-visible {
 
 .scroll-cue-label {
   color: rgba(244, 240, 232, 0.86);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
   line-height: 1;
@@ -535,8 +537,8 @@ summary:focus-visible {
 }
 
 .scroll-cue-arrow {
-  width: 11px;
-  height: 11px;
+  width: 9px;
+  height: 9px;
   border-right: 2px solid rgba(244, 240, 232, 0.92);
   border-bottom: 2px solid rgba(244, 240, 232, 0.92);
   transform: translateY(-3px) rotate(45deg);
@@ -656,11 +658,15 @@ summary:focus-visible {
 
 /* 首屏署名。原本 26px 的 ember 色會跟橘色標題搶注意力，
    改成細一階、亮度略低的白，讓它像落款而不是第二個標題。 */
+/* 署名要與詩句同級才讀得出是「作者」而不是圖說。
+   22px + 700 同時讓它進入 WCAG「大型文字」門檻（3:1），
+   在首屏亮處才不會卡在一般文字的 4.5:1 邊緣。
+   尺寸跟著 .home-page .hero-text 一起在各斷點縮放。 */
 .hero-name {
   margin: 26px 0 0;
   color: rgba(244, 240, 232, 0.86);
-  font-size: 19px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.04em;
 }
@@ -669,7 +675,7 @@ summary:focus-visible {
   display: block;
   margin-top: 3px;
   color: rgba(244, 240, 232, 0.6);
-  font-size: 0.68em;
+  font-size: 0.62em;
   font-weight: 500;
   letter-spacing: 0.06em;
 }
@@ -683,10 +689,13 @@ summary:focus-visible {
   overflow-wrap: break-word;
 }
 
+/* 首屏詩句壓在作品照最亮的部位，量測筆畫底下的實際像素只有 4.17:1，
+   低於 AA 的 4.5:1。加強背後的暗光會讓那層長方形重新露邊，
+   所以只提亮文字本身：90% 得到 4.64:1，也讓詩句重新比署名（86%）亮。 */
 .home-page .hero-text {
   margin-top: 24px;
   max-width: 560px;
-  color: rgba(244, 240, 232, 0.82);
+  color: rgba(244, 240, 232, 0.9);
   font-size: 22px;
   line-height: 1.72;
   word-break: keep-all;
@@ -695,7 +704,8 @@ summary:focus-visible {
 
 .home-page .hero-text span {
   margin-top: 10px;
-  color: rgba(244, 240, 232, 0.58);
+  /* 同上：首屏是全站英譯小字的例外，0.58 在照片上只有 4.01:1。 */
+  color: rgba(244, 240, 232, 0.68);
   font-size: 0.72em;
   line-height: 1.55;
 }
@@ -3215,6 +3225,10 @@ figcaption .bilingual-en,
   .home-page .hero-text {
     font-size: 20px;
   }
+
+  .hero-name {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 920px) and (orientation: landscape) {
@@ -3281,6 +3295,11 @@ figcaption .bilingual-en,
     margin-top: 16px;
     font-size: 17px;
     line-height: 1.58;
+  }
+
+  .hero-name {
+    margin-top: 18px;
+    font-size: 17px;
   }
 
   .home-page .hero-actions {
@@ -3528,6 +3547,10 @@ figcaption .bilingual-en,
 
   .home-page .hero-text span {
     font-size: 0.82em;
+  }
+
+  .hero-name {
+    font-size: 18px;
   }
 
   .home-page .hero-actions {
