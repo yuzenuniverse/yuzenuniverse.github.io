@@ -3,21 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icon-180.png" />
   <title>線條生成 | Line Generation | Yuzen Universe</title>
-  <meta name="description" content="線條生成系列，以流動線條召喚意識、角色與生命相遇的視覺場景。" />
-  <meta property="og:image" content="../assets/logo-final-web.png" />
-  <meta name="twitter:image" content="../assets/logo-final-web.png" />
+  <meta name="description" content="線條生成 Line Generation：線條不是描繪既定生命，而是讓意識、想像與雙手開始行動，使形體先於命名逐漸顯現。" />
+  <link rel="canonical" href="https://yuzenuniverse.com/works/line-generation.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="線條生成 | Line Generation | Yuzen Universe" />
+  <meta property="og:description" content="線條不是描繪既定生命，而是讓意識、想像與雙手開始行動，使形體先於命名逐漸顯現。" />
+  <meta property="og:url" content="https://yuzenuniverse.com/works/line-generation.html" />
+  <meta property="og:image" content="https://yuzenuniverse.com/assets/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="線條生成 | Line Generation | Yuzen Universe" />
+  <meta name="twitter:description" content="線條不是描繪既定生命，而是讓意識、想像與雙手開始行動，使形體先於命名逐漸顯現。" />
+  <meta name="twitter:image" content="https://yuzenuniverse.com/assets/og-cover.jpg" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://yuzenuniverse.com/works/line-generation.html#webpage",
+          "url": "https://yuzenuniverse.com/works/line-generation.html",
+          "name": "線條生成 | Line Generation | Yuzen Universe",
+          "isPartOf": {
+            "@id": "https://yuzenuniverse.com/#website"
+          },
+          "about": {
+            "@id": "https://yuzenuniverse.com/works/line-generation.html#creative-work"
+          },
+          "inLanguage": "zh-Hant"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://yuzenuniverse.com/works/line-generation.html#creative-work",
+          "name": "線條生成",
+          "alternateName": "Line Generation",
+          "url": "https://yuzenuniverse.com/works/line-generation.html",
+          "creator": {
+            "@id": "https://yuzenuniverse.com/#yuzen-cheng"
+          },
+          "isPartOf": {
+            "@id": "https://yuzenuniverse.com/#yuzen-universe"
+          },
+          "description": "線條不是描繪既定生命，而是讓意識、想像與雙手開始行動，使形體先於命名逐漸顯現。",
+          "inLanguage": "zh-Hant"
+        }
+      ]
+    }
+  </script>
   <link rel="stylesheet" href="../styles.css" />
+  <noscript>
+    <style>
+      /* 沒有 JavaScript 時的退路：漢堡鍵按不動，所以手機直接把選單攤開；
+         另外確保靠 JS 加 .is-visible 的進場元素不會永遠停在透明狀態。 */
+      .reveal { opacity: 1 !important; transform: none !important; }
+      @media (max-width: 980px) {
+        .menu-toggle { display: none !important; }
+        .site-header { flex-wrap: wrap; }
+        .site-nav {
+          position: static;
+          width: 100%;
+          padding: 6px 0 0;
+          border: 0;
+          background: none;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: none;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 2px;
+        }
+      }
+    </style>
+  </noscript>
 </head>
 <body class="subpage">
+  <a class="skip-link" href="#main">跳到主要內容 <span class="notranslate" translate="no">Skip to main content</span></a>
   <div class="cosmos-bg" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="../index.html#home" aria-label="回到又禎宇宙首頁">
-      <img src="../assets/logo-final-web-display.webp" alt="" width="512" height="512" />
+      <img src="../assets/logo-header.webp" alt="" width="96" height="96" />
       <span class="brand-copy"><strong>又禎宇宙</strong><em class="notranslate" translate="no">Yuzen Universe</em></span>
     </a>
-    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false"><span></span><span></span></button>
-    <nav class="site-nav" aria-label="主要導覽">
+    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-label="開啟選單" aria-expanded="false"><span></span><span></span></button>
+    <nav id="site-nav" class="site-nav" aria-label="主要導覽">
       <a href="../index.html#about"><strong>關於又禎</strong><em class="notranslate" translate="no">About Yuzen</em></a>
       <a href="../index.html#rift"><strong>創作理念</strong><em class="notranslate" translate="no">Creative Concept</em></a>
       <a href="../index.html#orbit"><strong>作品系列</strong><em class="notranslate" translate="no">Work Series</em></a>
@@ -26,7 +96,7 @@
     </nav>
   </header>
 
-  <main class="subpage-main">
+  <main id="main" tabindex="-1" class="subpage-main">
     <article class="detail-shell">
       <a class="back-link" href="../index.html#orbit">返回作品系列
             <span class="bilingual-en notranslate" lang="en" translate="no">Back to Work Series</span></a>
@@ -74,7 +144,7 @@
             </span>
           </a>
           <a class="curation-card" href="#conscious-xuan">
-            <img src="../assets/line-conscious-xuan.jpg" alt="意識玄" width="1018" height="1525" loading="lazy" />
+            <img src="../assets/web/line-conscious-xuan-display.webp" alt="意識玄" width="1018" height="1525" loading="lazy" srcset="../assets/web/line-conscious-xuan-display-760.webp 760w, ../assets/web/line-conscious-xuan-display.webp 1018w" sizes="(max-width: 680px) 92vw, 760px" />
             <span class="curation-card-body">
               <span class="curation-card-meta">2025 / 生命生成系列
             <span class="bilingual-en notranslate" lang="en" translate="no">2025 / Life Generation Series</span></span>
@@ -85,7 +155,7 @@
             </span>
           </a>
           <a class="curation-card" href="#lovers">
-            <img src="../assets/line-lovers.jpg" alt="戀人" width="1056" height="1563" loading="lazy" />
+            <img src="../assets/web/line-lovers-display.webp" alt="戀人" width="1056" height="1563" loading="lazy" srcset="../assets/web/line-lovers-display-760.webp 760w, ../assets/web/line-lovers-display.webp 1056w" sizes="(max-width: 680px) 92vw, 760px" />
             <span class="curation-card-body">
               <span class="curation-card-meta">2025 / 生命生成系列
             <span class="bilingual-en notranslate" lang="en" translate="no">2025 / Life Generation Series</span></span>
@@ -96,7 +166,7 @@
             </span>
           </a>
           <a class="curation-card" href="#grow-toward-sun">
-            <img src="../assets/line-grow-toward-sun.jpg" alt="向陽而生" width="1048" height="1562" loading="lazy" />
+            <img src="../assets/web/line-grow-toward-sun-display.webp" alt="向陽而生" width="1048" height="1562" loading="lazy" srcset="../assets/web/line-grow-toward-sun-display-760.webp 760w, ../assets/web/line-grow-toward-sun-display.webp 1048w" sizes="(max-width: 680px) 92vw, 760px" />
             <span class="curation-card-body">
               <span class="curation-card-meta">2025 / 生命生成系列
             <span class="bilingual-en notranslate" lang="en" translate="no">2025 / Life Generation Series</span></span>
@@ -107,7 +177,7 @@
             </span>
           </a>
           <a class="curation-card" href="#reveal">
-            <img src="../assets/line-reveal.jpg" alt="顯影" width="1256" height="1600" loading="lazy" />
+            <img src="../assets/web/line-reveal-display.webp" alt="顯影" width="1256" height="1600" loading="lazy" srcset="../assets/web/line-reveal-display-760.webp 760w, ../assets/web/line-reveal-display.webp 1256w" sizes="(max-width: 680px) 92vw, 760px" />
             <span class="curation-card-body">
               <span class="curation-card-meta">2026 / 生命生成系列
             <span class="bilingual-en notranslate" lang="en" translate="no">2026 / Life Generation Series</span></span>
@@ -196,7 +266,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-conscious-xuan.jpg" alt="意識玄" width="1018" height="1525" loading="lazy" />
+            <img src="../assets/web/line-conscious-xuan-display.webp" alt="意識玄" width="1018" height="1525" loading="lazy" srcset="../assets/web/line-conscious-xuan-display-760.webp 760w, ../assets/web/line-conscious-xuan-display.webp 1018w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -224,7 +294,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-another-conscious-xuan.jpg" alt="另意識玄" width="1033" height="1544" loading="lazy" />
+            <img src="../assets/web/line-another-conscious-xuan-display.webp" alt="另意識玄" width="1033" height="1544" loading="lazy" srcset="../assets/web/line-another-conscious-xuan-display-760.webp 760w, ../assets/web/line-another-conscious-xuan-display.webp 1033w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -252,7 +322,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-beings-in-xuan-discourse.jpg" alt="玄論中的眾生" width="1070" height="1600" loading="lazy" />
+            <img src="../assets/web/line-beings-in-xuan-discourse-display.webp" alt="玄論中的眾生" width="1070" height="1600" loading="lazy" srcset="../assets/web/line-beings-in-xuan-discourse-display-760.webp 760w, ../assets/web/line-beings-in-xuan-discourse-display.webp 1070w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -280,7 +350,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-coexistence.jpg" alt="共存" width="1561" height="1048" loading="lazy" />
+            <img src="../assets/line-coexistence.jpg" alt="共存" width="1561" height="1048" loading="lazy" srcset="../assets/web/line-coexistence-760.webp 760w, ../assets/line-coexistence.jpg 1561w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -308,7 +378,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-brainwave-workshop.jpg" alt="腦波工坊" width="1087" height="1600" loading="lazy" />
+            <img src="../assets/web/line-brainwave-workshop-display.webp" alt="腦波工坊" width="1087" height="1600" loading="lazy" srcset="../assets/web/line-brainwave-workshop-display-760.webp 760w, ../assets/web/line-brainwave-workshop-display.webp 1087w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -345,7 +415,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-embrace.jpg" alt="相擁" width="1264" height="1600" loading="lazy" />
+            <img src="../assets/web/line-embrace-display.webp" alt="相擁" width="1264" height="1600" loading="lazy" srcset="../assets/web/line-embrace-display-760.webp 760w, ../assets/web/line-embrace-display.webp 1264w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -373,7 +443,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-another-realm.jpg" alt="另一種境界" width="1146" height="1600" loading="lazy" />
+            <img src="../assets/web/line-another-realm-display.webp" alt="另一種境界" width="1146" height="1600" loading="lazy" srcset="../assets/web/line-another-realm-display-760.webp 760w, ../assets/web/line-another-realm-display.webp 1146w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -401,7 +471,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-lovers.jpg" alt="戀人" width="1056" height="1563" loading="lazy" />
+            <img src="../assets/web/line-lovers-display.webp" alt="戀人" width="1056" height="1563" loading="lazy" srcset="../assets/web/line-lovers-display-760.webp 760w, ../assets/web/line-lovers-display.webp 1056w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -429,7 +499,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-silent-communication.jpg" alt="無聲的交流" width="1142" height="1600" loading="lazy" />
+            <img src="../assets/web/line-silent-communication-display.webp" alt="無聲的交流" width="1142" height="1600" loading="lazy" srcset="../assets/web/line-silent-communication-display-760.webp 760w, ../assets/web/line-silent-communication-display.webp 1142w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -457,7 +527,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-life-joy.jpg" alt="生命的喜悅" width="1191" height="1600" loading="lazy" />
+            <img src="../assets/web/line-life-joy-display.webp" alt="生命的喜悅" width="1191" height="1600" loading="lazy" srcset="../assets/web/line-life-joy-display-760.webp 760w, ../assets/web/line-life-joy-display.webp 1191w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -485,7 +555,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-nurturer.jpg" alt="孕育者" width="1044" height="1569" loading="lazy" />
+            <img src="../assets/web/line-nurturer-display.webp" alt="孕育者" width="1044" height="1569" loading="lazy" srcset="../assets/web/line-nurturer-display-760.webp 760w, ../assets/web/line-nurturer-display.webp 1044w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -513,7 +583,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-guardian-angel.jpg" alt="守護天使" width="1052" height="1556" loading="lazy" />
+            <img src="../assets/web/line-guardian-angel-display.webp" alt="守護天使" width="1052" height="1556" loading="lazy" srcset="../assets/web/line-guardian-angel-display-760.webp 760w, ../assets/web/line-guardian-angel-display.webp 1052w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -550,7 +620,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-grow-toward-sun.jpg" alt="向陽而生" width="1048" height="1562" loading="lazy" />
+            <img src="../assets/web/line-grow-toward-sun-display.webp" alt="向陽而生" width="1048" height="1562" loading="lazy" srcset="../assets/web/line-grow-toward-sun-display-760.webp 760w, ../assets/web/line-grow-toward-sun-display.webp 1048w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -578,7 +648,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-magic-crystal-ball.jpg" alt="魔法水晶球" width="1052" height="1555" loading="lazy" />
+            <img src="../assets/web/line-magic-crystal-ball-display.webp" alt="魔法水晶球" width="1052" height="1555" loading="lazy" srcset="../assets/web/line-magic-crystal-ball-display-760.webp 760w, ../assets/web/line-magic-crystal-ball-display.webp 1052w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -606,7 +676,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-pet-and-me.jpg" alt="寵物與我" width="1059" height="1545" loading="lazy" />
+            <img src="../assets/web/line-pet-and-me-display.webp" alt="寵物與我" width="1059" height="1545" loading="lazy" srcset="../assets/web/line-pet-and-me-display-760.webp 760w, ../assets/web/line-pet-and-me-display.webp 1059w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -634,7 +704,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-flower-reverie.jpg" alt="花朵的異想" width="1155" height="1600" loading="lazy" />
+            <img src="../assets/web/line-flower-reverie-display.webp" alt="花朵的異想" width="1155" height="1600" loading="lazy" srcset="../assets/web/line-flower-reverie-display-760.webp 760w, ../assets/web/line-flower-reverie-display.webp 1155w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -662,7 +732,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-flying-fairy.jpg" alt="飛天仙子" width="1045" height="1567" loading="lazy" />
+            <img src="../assets/web/line-flying-fairy-display.webp" alt="飛天仙子" width="1045" height="1567" loading="lazy" srcset="../assets/web/line-flying-fairy-display-760.webp 760w, ../assets/web/line-flying-fairy-display.webp 1045w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -699,7 +769,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-just-serendipity.jpg" alt="就是奇遇" width="1027" height="1558" loading="lazy" />
+            <img src="../assets/web/line-just-serendipity-display.webp" alt="就是奇遇" width="1027" height="1558" loading="lazy" srcset="../assets/web/line-just-serendipity-display-760.webp 760w, ../assets/web/line-just-serendipity-display.webp 1027w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -727,7 +797,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-chatting-world.jpg" alt="談天說地" width="1600" height="1136" loading="lazy" />
+            <img src="../assets/web/line-chatting-world-display.webp" alt="談天說地" width="1600" height="1136" loading="lazy" srcset="../assets/web/line-chatting-world-display-760.webp 760w, ../assets/web/line-chatting-world-display.webp 1600w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -755,7 +825,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-no-one-realm.jpg" alt="無人之境" width="1182" height="1600" loading="lazy" />
+            <img src="../assets/web/line-no-one-realm-display.webp" alt="無人之境" width="1182" height="1600" loading="lazy" srcset="../assets/web/line-no-one-realm-display-760.webp 760w, ../assets/web/line-no-one-realm-display.webp 1182w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -783,7 +853,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-tree-dream.jpg" alt="樹的夢" width="972" height="1447" loading="lazy" />
+            <img src="../assets/web/line-tree-dream-display.webp" alt="樹的夢" width="972" height="1447" loading="lazy" srcset="../assets/web/line-tree-dream-display-760.webp 760w, ../assets/web/line-tree-dream-display.webp 972w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -811,7 +881,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-terroir-table.jpg" alt="風土餐桌" width="1233" height="1600" loading="lazy" />
+            <img src="../assets/web/line-terroir-table-display.webp" alt="風土餐桌" width="1233" height="1600" loading="lazy" srcset="../assets/web/line-terroir-table-display-760.webp 760w, ../assets/web/line-terroir-table-display.webp 1233w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊
@@ -839,7 +909,7 @@
         </header>
         <div class="detail-grid">
           <figure class="detail-figure">
-            <img src="../assets/line-reveal.jpg" alt="顯影" width="1256" height="1600" loading="lazy" />
+            <img src="../assets/web/line-reveal-display.webp" alt="顯影" width="1256" height="1600" loading="lazy" srcset="../assets/web/line-reveal-display-760.webp 760w, ../assets/web/line-reveal-display.webp 1256w" sizes="(max-width: 680px) 92vw, 760px" />
           </figure>
           <aside class="detail-meta">
             <h2>作品資訊

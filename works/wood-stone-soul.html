@@ -3,27 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icon-180.png" />
   <title>生命的顯現 | Manifestation of Life | Yuzen Universe</title>
-  <meta name="description" content="生命的顯現系列在石頭、樹木、舊牆、海岸與布料中觀看隱藏生命逐漸浮現。" />
-  <meta property="og:image" content="../assets/logo-final-web.png" />
-  <meta name="twitter:image" content="../assets/logo-final-web.png" />
+  <meta name="description" content="生命的顯現 Manifestation of Life：在石紋、木紋、舊牆與海岸痕跡中觀看尚未成形的生命線索，讓生命在想像與線條之間逐漸顯現。" />
+  <link rel="canonical" href="https://yuzenuniverse.com/works/wood-stone-soul.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="生命的顯現 | Manifestation of Life | Yuzen Universe" />
+  <meta property="og:description" content="在石紋、木紋、舊牆與海岸痕跡中觀看尚未成形的生命線索，讓生命在想像與線條之間逐漸顯現。" />
+  <meta property="og:url" content="https://yuzenuniverse.com/works/wood-stone-soul.html" />
+  <meta property="og:image" content="https://yuzenuniverse.com/assets/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="生命的顯現 | Manifestation of Life | Yuzen Universe" />
+  <meta name="twitter:description" content="在石紋、木紋、舊牆與海岸痕跡中觀看尚未成形的生命線索，讓生命在想像與線條之間逐漸顯現。" />
+  <meta name="twitter:image" content="https://yuzenuniverse.com/assets/og-cover.jpg" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://yuzenuniverse.com/works/wood-stone-soul.html#webpage",
+          "url": "https://yuzenuniverse.com/works/wood-stone-soul.html",
+          "name": "生命的顯現 | Manifestation of Life | Yuzen Universe",
+          "isPartOf": {
+            "@id": "https://yuzenuniverse.com/#website"
+          },
+          "about": {
+            "@id": "https://yuzenuniverse.com/works/wood-stone-soul.html#creative-work"
+          },
+          "inLanguage": "zh-Hant"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://yuzenuniverse.com/works/wood-stone-soul.html#creative-work",
+          "name": "生命的顯現",
+          "alternateName": "Manifestation of Life",
+          "url": "https://yuzenuniverse.com/works/wood-stone-soul.html",
+          "creator": {
+            "@id": "https://yuzenuniverse.com/#yuzen-cheng"
+          },
+          "isPartOf": {
+            "@id": "https://yuzenuniverse.com/#yuzen-universe"
+          },
+          "description": "在石紋、木紋、舊牆與海岸痕跡中觀看尚未成形的生命線索，讓生命在想像與線條之間逐漸顯現。",
+          "inLanguage": "zh-Hant"
+        }
+      ]
+    }
+  </script>
   <link rel="stylesheet" href="../styles.css" />
+  <noscript>
+    <style>
+      /* 沒有 JavaScript 時的退路：漢堡鍵按不動，所以手機直接把選單攤開；
+         另外確保靠 JS 加 .is-visible 的進場元素不會永遠停在透明狀態。 */
+      .reveal { opacity: 1 !important; transform: none !important; }
+      @media (max-width: 980px) {
+        .menu-toggle { display: none !important; }
+        .site-header { flex-wrap: wrap; }
+        .site-nav {
+          position: static;
+          width: 100%;
+          padding: 6px 0 0;
+          border: 0;
+          background: none;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: none;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 2px;
+        }
+      }
+    </style>
+  </noscript>
 </head>
 <body class="subpage life-manifestation-page">
+  <a class="skip-link" href="#main">跳到主要內容 <span class="notranslate" translate="no">Skip to main content</span></a>
   <div class="cosmos-bg" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="../index.html#home" aria-label="回到又禎宇宙首頁">
-      <img src="../assets/logo-final-web-display.webp" alt="" width="512" height="512" />
+      <img src="../assets/logo-header.webp" alt="" width="96" height="96" />
       <span class="brand-copy">
         <strong>又禎宇宙</strong>
         <em class="notranslate" translate="no">Yuzen Universe</em>
       </span>
     </a>
-    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">
+    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-label="開啟選單" aria-expanded="false">
       <span></span>
       <span></span>
     </button>
-    <nav class="site-nav" aria-label="主要導覽">
+    <nav id="site-nav" class="site-nav" aria-label="主要導覽">
       <a href="../index.html#about"><strong>關於又禎</strong><em class="notranslate" translate="no">About Yuzen</em></a>
       <a href="../index.html#rift"><strong>創作理念</strong><em class="notranslate" translate="no">Creative Concept</em></a>
       <a href="../index.html#orbit"><strong>作品系列</strong><em class="notranslate" translate="no">Work Series</em></a>
@@ -32,7 +102,7 @@
     </nav>
   </header>
 
-  <main class="subpage-main">
+  <main id="main" tabindex="-1" class="subpage-main">
     <article class="detail-shell">
       <a class="back-link" href="../index.html#orbit">回到作品系列
             <span class="bilingual-en notranslate" lang="en" translate="no">Back to Work Series</span></a>
@@ -86,9 +156,9 @@
         <div class="curation-grid curation-grid-pairs">
           <a class="curation-card" href="#ancient-legend">
             <span class="curation-card-images curation-card-images-trio">
-              <img src="../assets/ancient-legend-photo.jpg" alt="遠古的傳說 作品照片" width="1116" height="1146" loading="lazy" />
-              <img src="../assets/ancient-legend-line.jpg" alt="遠古的傳說 線稿" width="1125" height="828" loading="lazy" />
-              <img src="../assets/ancient-legend-color.jpg" alt="遠古的傳說 彩稿" width="1121" height="784" loading="lazy" />
+              <img src="../assets/web/ancient-legend-photo-display.webp" alt="遠古的傳說 作品照片" width="1116" height="1146" loading="lazy" />
+              <img src="../assets/web/ancient-legend-line-display.webp" alt="遠古的傳說 線稿" width="1125" height="828" loading="lazy" />
+              <img src="../assets/web/ancient-legend-color-display.webp" alt="遠古的傳說 彩稿" width="1121" height="784" loading="lazy" />
             </span>
             <span class="curation-card-body">
               <span class="curation-card-meta">2021 / 石板召喚系列
@@ -101,9 +171,9 @@
           </a>
           <a class="curation-card" href="#old-wall-memory">
             <span class="curation-card-images curation-card-images-trio">
-              <img src="../assets/old-wall-memory-photo.jpg" alt="老牆的記憶 作品照片" width="1800" height="1350" loading="lazy" />
-              <img src="../assets/old-wall-memory-line.jpg" alt="老牆的記憶 線稿" width="1800" height="1266" loading="lazy" />
-              <img src="../assets/old-wall-memory-color.jpg" alt="老牆的記憶 彩稿" width="1800" height="1415" loading="lazy" />
+              <img src="../assets/web/old-wall-memory-photo-display.webp" alt="老牆的記憶 作品照片" width="1600" height="1200" loading="lazy" />
+              <img src="../assets/web/old-wall-memory-line-display.webp" alt="老牆的記憶 線稿" width="1600" height="1125" loading="lazy" />
+              <img src="../assets/web/old-wall-memory-color-display.webp" alt="老牆的記憶 彩稿" width="1600" height="1258" loading="lazy" />
             </span>
             <span class="curation-card-body">
               <span class="curation-card-meta">2021 / 牆面系列
@@ -116,8 +186,8 @@
           </a>
           <a class="curation-card" href="#wounded-self">
             <span class="curation-card-images">
-              <img src="../assets/wounded-self-photo.jpg" alt="受傷的我 X光影像" width="2625" height="3114" loading="lazy" />
-              <img src="../assets/wounded-self-drawing.jpg" alt="受傷的我 線稿" width="2475" height="3481" loading="lazy" />
+              <img src="../assets/web/wounded-self-photo-display.webp" alt="受傷的我 X光影像" width="1349" height="1600" loading="lazy" />
+              <img src="../assets/web/wounded-self-drawing-display.webp" alt="受傷的我 線稿" width="1138" height="1600" loading="lazy" />
             </span>
             <span class="curation-card-body">
               <span class="curation-card-meta">2021 / 生命顯現系列
@@ -130,9 +200,9 @@
           </a>
           <a class="curation-card" href="#tree-city">
             <span class="curation-card-images curation-card-images-trio">
-              <img src="../assets/tree-city-photo.jpg" alt="樹木的城市 作品照片" width="1064" height="1479" loading="lazy" />
-              <img src="../assets/tree-city-drawing.jpg" alt="樹木的城市 線稿" width="563" height="816" loading="lazy" />
-              <img src="../assets/tree-city-color.jpg" alt="樹木的城市 彩稿" width="1513" height="2000" loading="lazy" />
+              <img src="../assets/web/tree-city-photo-display.webp" alt="樹木的城市 作品照片" width="1064" height="1479" loading="lazy" />
+              <img src="../assets/web/tree-city-drawing-display.webp" alt="樹木的城市 線稿" width="563" height="816" loading="lazy" />
+              <img src="../assets/web/tree-city-color-display.webp" alt="樹木的城市 彩稿" width="1210" height="1600" loading="lazy" />
             </span>
             <span class="curation-card-body">
               <span class="curation-card-meta">2020 / 樹木召喚系列
@@ -187,9 +257,9 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images ancient-legend-gallery">
-              <img src="../assets/ancient-legend-photo.jpg" alt="遠古的傳說 作品照片" width="1116" height="1146" loading="lazy" />
-              <img src="../assets/ancient-legend-line.jpg" alt="遠古的傳說 線稿" width="1125" height="828" loading="lazy" />
-              <img src="../assets/ancient-legend-color.jpg" alt="遠古的傳說 彩稿" width="1121" height="784" loading="lazy" />
+              <img src="../assets/web/ancient-legend-photo-display.webp" alt="遠古的傳說 作品照片" width="1116" height="1146" loading="lazy" />
+              <img src="../assets/web/ancient-legend-line-display.webp" alt="遠古的傳說 線稿" width="1125" height="828" loading="lazy" />
+              <img src="../assets/web/ancient-legend-color-display.webp" alt="遠古的傳說 彩稿" width="1121" height="784" loading="lazy" />
             </div>
           </figure>
 
@@ -237,9 +307,9 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images ancient-legend-gallery">
-              <img src="../assets/overlapping-memory-photo.jpg" alt="重疊的記憶 作品照片" width="914" height="1600" loading="lazy" />
-              <img src="../assets/overlapping-memory-line.jpg" alt="重疊的記憶 線稿" width="1123" height="1600" loading="lazy" />
-              <img src="../assets/overlapping-memory-color.jpg" alt="重疊的記憶 彩稿" width="1108" height="1572" loading="lazy" />
+              <img src="../assets/web/overlapping-memory-photo-display.webp" alt="重疊的記憶 作品照片" width="914" height="1600" loading="lazy" />
+              <img src="../assets/web/overlapping-memory-line-display.webp" alt="重疊的記憶 線稿" width="1123" height="1600" loading="lazy" />
+              <img src="../assets/web/overlapping-memory-color-display.webp" alt="重疊的記憶 彩稿" width="1108" height="1572" loading="lazy" />
             </div>
           </figure>
 
@@ -279,7 +349,7 @@
         </div>
         <div class="series-feature-video detail-feature-video" aria-label="重疊的記憶作品短片">
           <div class="series-feature-copy">
-            <p class="series-feature-kicker">作品短片 <span class="notranslate" translate="no">Work Video</span></p>
+            <p class="series-feature-label">作品短片 <span class="notranslate" translate="no">Work Video</span></p>
             <h3>重疊的記憶：層層浮現的痕跡
             <span class="bilingual-en notranslate" lang="en" translate="no">Overlapping Memory: Traces Emerging Layer by Layer</span></h3>
             <p>影片讓石板表面的重疊痕跡、線稿與彩稿慢慢浮現，呈現記憶如何從痕跡變成正在呼吸的生命。
@@ -300,9 +370,9 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images ancient-legend-gallery">
-              <img src="../assets/old-wall-memory-photo.jpg" alt="老牆的記憶 作品照片" width="1800" height="1350" loading="lazy" />
-              <img src="../assets/old-wall-memory-line.jpg" alt="老牆的記憶 線稿" width="1800" height="1266" loading="lazy" />
-              <img src="../assets/old-wall-memory-color.jpg" alt="老牆的記憶 彩稿" width="1800" height="1415" loading="lazy" />
+              <img src="../assets/web/old-wall-memory-photo-display.webp" alt="老牆的記憶 作品照片" width="1600" height="1200" loading="lazy" />
+              <img src="../assets/web/old-wall-memory-line-display.webp" alt="老牆的記憶 線稿" width="1600" height="1125" loading="lazy" />
+              <img src="../assets/web/old-wall-memory-color-display.webp" alt="老牆的記憶 彩稿" width="1600" height="1258" loading="lazy" />
             </div>
           </figure>
 
@@ -343,7 +413,7 @@
 
         <div class="series-feature-video detail-feature-video" aria-label="老牆的記憶作品短片">
           <div class="series-feature-copy">
-            <p class="series-feature-kicker">作品短片 <span class="notranslate" translate="no">Work Video</span></p>
+            <p class="series-feature-label">作品短片 <span class="notranslate" translate="no">Work Video</span></p>
             <h3>老牆的記憶：牆面裡保存的生命
             <span class="bilingual-en notranslate" lang="en" translate="no">Memory of the Old Wall: Life Preserved Within the Wall</span></h3>
             <p>影片從斑駁牆面、線條到完整彩圖，讓牆上的裂縫與痕跡轉化為一個被看見的生命場景。
@@ -364,8 +434,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/emerging-between-photo.jpg" alt="浮現之間 石紋照片" width="1167" height="1612" loading="lazy" />
-              <img src="../assets/emerging-between-drawing.jpg" alt="浮現之間 線稿" width="2481" height="3191" loading="lazy" />
+              <img src="../assets/web/emerging-between-photo-display.webp" alt="浮現之間 石紋照片" width="1158" height="1600" loading="lazy" />
+              <img src="../assets/web/emerging-between-drawing-display.webp" alt="浮現之間 線稿" width="1244" height="1600" loading="lazy" />
             </div>
           </figure>
 
@@ -414,8 +484,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/beings-in-cracks-photo.jpg" alt="裂縫中的眾生 石紋照片" width="1561" height="2815" loading="lazy" />
-              <img src="../assets/beings-in-cracks-drawing.jpg" alt="裂縫中的眾生 線稿" width="1273" height="3369" loading="lazy" />
+              <img src="../assets/web/beings-in-cracks-photo-display.webp" alt="裂縫中的眾生 石紋照片" width="887" height="1600" loading="lazy" />
+              <img src="../assets/web/beings-in-cracks-drawing-display.webp" alt="裂縫中的眾生 線稿" width="605" height="1600" loading="lazy" />
             </div>
           </figure>
 
@@ -473,8 +543,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/wounded-self-photo.jpg" alt="受傷的我 X光影像" width="2625" height="3114" loading="lazy" />
-              <img src="../assets/wounded-self-drawing.jpg" alt="受傷的我 線稿" width="2475" height="3481" loading="lazy" />
+              <img src="../assets/web/wounded-self-photo-display.webp" alt="受傷的我 X光影像" width="1349" height="1600" loading="lazy" />
+              <img src="../assets/web/wounded-self-drawing-display.webp" alt="受傷的我 線稿" width="1138" height="1600" loading="lazy" />
             </div>
           </figure>
 
@@ -532,8 +602,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/beyond-landscape-photo.jpg" alt="超自然之境 作品照片" width="941" height="1672" loading="lazy" />
-              <img src="../assets/beyond-landscape-drawing.jpg" alt="超自然之境 線稿" width="600" height="891" loading="lazy" />
+              <img src="../assets/web/beyond-landscape-photo-display.webp" alt="超自然之境 作品照片" width="900" height="1600" loading="lazy" />
+              <img src="../assets/web/beyond-landscape-drawing-display.webp" alt="超自然之境 線稿" width="600" height="891" loading="lazy" />
             </div>
           </figure>
 
@@ -580,8 +650,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/all-things-awaken-photo.jpg" alt="萬物甦醒 作品照片" width="727" height="434" loading="lazy" />
-              <img src="../assets/all-things-awaken-drawing.jpg" alt="萬物甦醒 線稿" width="722" height="497" loading="lazy" />
+              <img src="../assets/web/all-things-awaken-photo-display.webp" alt="萬物甦醒 作品照片" width="727" height="434" loading="lazy" />
+              <img src="../assets/web/all-things-awaken-drawing-display.webp" alt="萬物甦醒 線稿" width="722" height="497" loading="lazy" />
             </div>
           </figure>
 
@@ -628,8 +698,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/unknown-realm-photo.jpg" alt="未知之境 作品照片" width="1047" height="562" loading="lazy" />
-              <img src="../assets/unknown-realm-drawing.jpg" alt="未知之境 線稿" width="773" height="530" loading="lazy" />
+              <img src="../assets/web/unknown-realm-photo-display.webp" alt="未知之境 作品照片" width="1047" height="562" loading="lazy" />
+              <img src="../assets/web/unknown-realm-drawing-display.webp" alt="未知之境 線稿" width="773" height="530" loading="lazy" />
             </div>
           </figure>
 
@@ -686,7 +756,7 @@
           <figure class="detail-figure">
             <div class="detail-gallery-images">
               <img src="../assets/time-residents-photo.jpg" alt="時間的居民 作品照片" width="939" height="1600" loading="lazy" />
-              <img src="../assets/time-residents-drawing.jpg" alt="時間的居民 線稿" width="1256" height="1600" loading="lazy" />
+              <img src="../assets/web/time-residents-drawing-display.webp" alt="時間的居民 線稿" width="1256" height="1600" loading="lazy" />
             </div>
           </figure>
 
@@ -774,7 +844,7 @@
 
         <div class="series-feature-video detail-feature-video" aria-label="公主之石代表短片">
           <div class="series-feature-copy">
-            <p class="series-feature-kicker">代表短片 <span class="notranslate" translate="no">Featured Video</span></p>
+            <p class="series-feature-label">代表短片 <span class="notranslate" translate="no">Featured Video</span></p>
             <h3>公主之石：石頭召喚的起源
             <span class="bilingual-en notranslate" lang="en" translate="no">Princess Stone: The Origin of Stone Summoning</span></h3>
             <p>《公主之石》回到台灣東海岸的第一眼凝視，讓安靜的石頭、線稿裡的公主與陪伴她的朋友一起被召喚出來。
@@ -796,7 +866,7 @@
           <figure class="detail-figure">
             <div class="detail-gallery-images">
               <img src="../assets/joyful-carnival-photo.webp" alt="歡樂嘉年華 作品照片" width="1415" height="1157" loading="lazy" />
-              <img src="../assets/joyful-carnival-drawing.jpg" alt="歡樂嘉年華 線稿" width="1132" height="1446" loading="lazy" />
+              <img src="../assets/web/joyful-carnival-drawing-display.webp" alt="歡樂嘉年華 線稿" width="1132" height="1446" loading="lazy" />
             </div>
           </figure>
 
@@ -844,7 +914,7 @@
           <figure class="detail-figure">
             <div class="detail-gallery-images">
               <img src="../assets/home-shape-photo.webp" alt="家的形狀 作品照片" width="1301" height="1258" loading="lazy" />
-              <img src="../assets/home-shape-drawing.jpg" alt="家的形狀 線稿" width="1138" height="1438" loading="lazy" />
+              <img src="../assets/web/home-shape-drawing-display.webp" alt="家的形狀 線稿" width="1138" height="1438" loading="lazy" />
             </div>
           </figure>
 
@@ -891,7 +961,7 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/joyful-wine-cup-photo.jpg" alt="歡樂的酒杯 作品照片" width="1306" height="1367" loading="lazy" />
+              <img src="../assets/web/joyful-wine-cup-photo-display.webp" alt="歡樂的酒杯 作品照片" width="1306" height="1367" loading="lazy" />
               <img src="../assets/joyful-wine-cup-drawing.webp" alt="歡樂的酒杯 線稿" width="1300" height="1696" loading="lazy" />
             </div>
           </figure>
@@ -939,8 +1009,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/quiet-companionship-photo.jpg" alt="安靜的陪伴 作品照片" width="1022" height="1143" loading="lazy" />
-              <img src="../assets/quiet-companionship-drawing.jpg" alt="安靜的陪伴 線稿" width="1136" height="1441" loading="lazy" />
+              <img src="../assets/web/quiet-companionship-photo-display.webp" alt="安靜的陪伴 作品照片" width="1022" height="1143" loading="lazy" />
+              <img src="../assets/web/quiet-companionship-drawing-display.webp" alt="安靜的陪伴 線稿" width="1136" height="1441" loading="lazy" />
             </div>
           </figure>
 
@@ -988,7 +1058,7 @@
           <figure class="detail-figure">
             <div class="detail-gallery-images">
               <img src="../assets/initial-born-photo.webp" alt="初生 作品照片" width="1065" height="1477" loading="lazy" />
-              <img src="../assets/initial-born-drawing.jpg" alt="初生 線稿" width="1146" height="1429" loading="lazy" />
+              <img src="../assets/web/initial-born-drawing-display.webp" alt="初生 線稿" width="1146" height="1429" loading="lazy" />
             </div>
           </figure>
 
@@ -1036,7 +1106,7 @@
           <figure class="detail-figure">
             <div class="detail-gallery-images">
               <img src="../assets/life-egg-photo.webp" alt="生命之卵 作品照片" width="1055" height="1491" loading="lazy" />
-              <img src="../assets/life-egg-drawing.jpg" alt="生命之卵 線稿" width="1128" height="1451" loading="lazy" />
+              <img src="../assets/web/life-egg-drawing-display.webp" alt="生命之卵 線稿" width="1128" height="1451" loading="lazy" />
             </div>
           </figure>
 
@@ -1142,8 +1212,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/tree-spirit-settlement-photo.jpg" alt="樹精群聚 作品照片" width="601" height="816" loading="lazy" />
-              <img src="../assets/tree-spirit-settlement-drawing.jpg" alt="樹精群聚 線稿" width="567" height="820" loading="lazy" />
+              <img src="../assets/web/tree-spirit-settlement-photo-display.webp" alt="樹精群聚 作品照片" width="601" height="816" loading="lazy" />
+              <img src="../assets/web/tree-spirit-settlement-drawing-display.webp" alt="樹精群聚 線稿" width="567" height="820" loading="lazy" />
             </div>
           </figure>
 
@@ -1190,9 +1260,9 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images ancient-legend-gallery">
-              <img src="../assets/tree-city-photo.jpg" alt="樹木的城市 作品照片" width="1064" height="1479" loading="lazy" />
-              <img src="../assets/tree-city-drawing.jpg" alt="樹木的城市 線稿" width="563" height="816" loading="lazy" />
-              <img src="../assets/tree-city-color.jpg" alt="樹木的城市 彩稿" width="1513" height="2000" loading="lazy" />
+              <img src="../assets/web/tree-city-photo-display.webp" alt="樹木的城市 作品照片" width="1064" height="1479" loading="lazy" />
+              <img src="../assets/web/tree-city-drawing-display.webp" alt="樹木的城市 線稿" width="563" height="816" loading="lazy" />
+              <img src="../assets/web/tree-city-color-display.webp" alt="樹木的城市 彩稿" width="1210" height="1600" loading="lazy" />
             </div>
           </figure>
 
@@ -1240,8 +1310,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/tree-realm-photo.jpg" alt="樹界 作品照片" width="534" height="867" loading="lazy" />
-              <img src="../assets/tree-realm-drawing.jpg" alt="樹界 線稿" width="596" height="867" loading="lazy" />
+              <img src="../assets/web/tree-realm-photo-display.webp" alt="樹界 作品照片" width="534" height="867" loading="lazy" />
+              <img src="../assets/web/tree-realm-drawing-display.webp" alt="樹界 線稿" width="596" height="867" loading="lazy" />
             </div>
           </figure>
 
@@ -1288,9 +1358,9 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images ancient-legend-gallery">
-              <img src="../assets/listener-tree-photo.jpg" alt="樹木的傾聽者 作品照片" width="635" height="836" loading="lazy" />
-              <img src="../assets/listener-tree-drawing.jpg" alt="樹木的傾聽者 線稿" width="571" height="832" loading="lazy" />
-              <img src="../assets/listener-tree-color.jpg" alt="樹木的傾聽者 彩稿" width="1560" height="2000" loading="lazy" />
+              <img src="../assets/web/listener-tree-photo-display.webp" alt="樹木的傾聽者 作品照片" width="635" height="836" loading="lazy" />
+              <img src="../assets/web/listener-tree-drawing-display.webp" alt="樹木的傾聽者 線稿" width="571" height="832" loading="lazy" />
+              <img src="../assets/web/listener-tree-color-display.webp" alt="樹木的傾聽者 彩稿" width="1248" height="1600" loading="lazy" />
             </div>
           </figure>
 
@@ -1338,8 +1408,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/yin-yang-between-photo.jpg" alt="裂縫之陰陽之間 作品照片" width="574" height="832" loading="lazy" />
-              <img src="../assets/yin-yang-between-drawing.jpg" alt="裂縫之陰陽之間 線稿" width="567" height="820" loading="lazy" />
+              <img src="../assets/web/yin-yang-between-photo-display.webp" alt="裂縫之陰陽之間 作品照片" width="574" height="832" loading="lazy" />
+              <img src="../assets/web/yin-yang-between-drawing-display.webp" alt="裂縫之陰陽之間 線稿" width="567" height="820" loading="lazy" />
             </div>
           </figure>
 
@@ -1491,8 +1561,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/silk-whisper-photo.jpg" alt="絲衣 作品照片" width="599" height="808" loading="lazy" />
-              <img src="../assets/silk-whisper-drawing.jpg" alt="絲衣 線稿" width="626" height="910" loading="lazy" />
+              <img src="../assets/web/silk-whisper-photo-display.webp" alt="絲衣 作品照片" width="599" height="808" loading="lazy" />
+              <img src="../assets/web/silk-whisper-drawing-display.webp" alt="絲衣 線稿" width="626" height="910" loading="lazy" />
             </div>
           </figure>
 
@@ -1539,8 +1609,8 @@
         <div class="detail-grid">
           <figure class="detail-figure">
             <div class="detail-gallery-images">
-              <img src="../assets/cat-kingdom-photo.jpg" alt="貓王國 作品照片" width="636" height="480" loading="lazy" />
-              <img src="../assets/cat-kingdom-drawing.jpg" alt="貓王國 線稿" width="792" height="521" loading="lazy" />
+              <img src="../assets/web/cat-kingdom-photo-display.webp" alt="貓王國 作品照片" width="636" height="480" loading="lazy" />
+              <img src="../assets/web/cat-kingdom-drawing-display.webp" alt="貓王國 線稿" width="792" height="521" loading="lazy" />
             </div>
           </figure>
 
