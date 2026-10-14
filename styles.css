@@ -336,17 +336,17 @@ summary:focus-visible {
 .hero-artwork-scene > .hero-copy::before {
   content: "";
   position: absolute;
-  inset: -46px -56px -42px -36px;
+  /* 這層暗光的邊緣不能靠遮罩去切：遮罩的橢圓比元素本身大，
+     一旦暗光加深，被方框切掉的那一邊就會在照片上顯出長方形。
+     改成把元素放大到遠超過文字，再用一個「在框內就已經完全淡出」的
+     橢圓漸層當底色（半徑 47%/48%、中心 53%/50%、90% 處歸零 →
+     最遠只到 95.3%，碰不到框邊），四周自然消失，不需要遮罩。 */
+  inset: -110px -210px -130px -130px;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 64% 46%, rgba(32, 36, 42, 0.5), rgba(18, 19, 19, 0.34) 48%, rgba(13, 17, 24, 0.14) 68%, transparent 86%),
-    radial-gradient(ellipse at 78% 28%, rgba(255, 138, 61, 0.08), transparent 62%),
-    linear-gradient(270deg, rgba(13, 17, 24, 0.42), rgba(18, 19, 19, 0.24) 58%, transparent 100%);
-  /* 上面第三層是水平漸層，只有左右淡出，上緣、下緣與右緣是硬切——
-     疊在作品照片上會露出一塊看得見的長方形。用遮罩讓四邊都羽化。 */
-  -webkit-mask-image: radial-gradient(ellipse 76% 80% at 60% 50%, #000 38%, rgba(0, 0, 0, 0.55) 70%, transparent 100%);
-  mask-image: radial-gradient(ellipse 76% 80% at 60% 50%, #000 38%, rgba(0, 0, 0, 0.55) 70%, transparent 100%);
+    radial-gradient(ellipse 47% 48% at 53% 50%, rgba(24, 27, 32, 1), rgba(19, 21, 25, 0.74) 44%, rgba(14, 17, 22, 0.38) 68%, transparent 90%),
+    radial-gradient(ellipse 28% 24% at 66% 26%, rgba(255, 138, 61, 0.07), transparent 72%);
 }
 
 .universe-stage {
@@ -412,14 +412,16 @@ summary:focus-visible {
   opacity: 0.74;
 }
 
+/* 軌道上的光點縮小一級：原本 10px 的色塊會跟中央的標誌搶視線，
+   縮到 7px 才讀得出是「繞行的光」而不是貼上去的圓點。光暈同步收斂。 */
 .orbit::after {
   content: "";
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--blue);
-  box-shadow: 0 0 22px rgba(0, 157, 224, 0.86);
+  box-shadow: 0 0 16px rgba(0, 157, 224, 0.8);
 }
 
 .orbit-one {
@@ -447,7 +449,7 @@ summary:focus-visible {
   left: 80px;
   bottom: 132px;
   background: var(--ember);
-  box-shadow: 0 0 24px rgba(255, 74, 18, 0.84);
+  box-shadow: 0 0 17px rgba(255, 74, 18, 0.8);
 }
 
 .orbit-three {
@@ -462,16 +464,17 @@ summary:focus-visible {
 .orbit-three::after {
   right: 34px;
   bottom: 120px;
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.46);
+  box-shadow: 0 0 11px rgba(255, 255, 255, 0.42);
 }
 
+/* 靜止的星點跟著軌道光點一起收斂，否則兩種尺寸會打架。 */
 .star-point {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
 }
 
@@ -479,30 +482,34 @@ summary:focus-visible {
   top: 16%;
   left: 22%;
   background: var(--blue);
-  box-shadow: 0 0 28px rgba(0, 157, 224, 0.92);
+  box-shadow: 0 0 20px rgba(0, 157, 224, 0.86);
 }
 
 .ember-star {
   right: 18%;
   bottom: 20%;
   background: var(--ember);
-  box-shadow: 0 0 30px rgba(255, 74, 18, 0.9);
+  box-shadow: 0 0 21px rgba(255, 74, 18, 0.84);
 }
 
 .gray-star {
   left: 16%;
   bottom: 28%;
   background: #5d5d59;
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 13px rgba(255, 255, 255, 0.2);
 }
 
-/* 首屏佔滿整個視窗，底部又是漸暗的，訪客不一定知道下面還有內容。 */
+/* 首屏佔滿整個視窗，底部又是漸暗的，桌機訪客不一定知道下面還有內容。
+   但這個提醒只在「寬到有雙欄版面、又高到底部留得出空白帶」時才成立：
+   窄螢幕或矮視窗下它會疊到「觀看作品系列」按鈕上（390px 寬時重疊 8px，
+   橫向手機重疊 44px），而且在手機上捲動本來就是最自然的動作，不需要被提醒。
+   所以預設不顯示，只在夠寬又夠高的視窗才出現。 */
 .scroll-cue {
   position: absolute;
   left: 50%;
   bottom: 30px;
   z-index: 3;
-  display: grid;
+  display: none;
   justify-items: center;
   gap: 8px;
   width: auto;
@@ -556,6 +563,12 @@ summary:focus-visible {
 
 .scroll-cue:hover .scroll-cue-label {
   color: var(--ember-soft);
+}
+
+@media (min-width: 981px) and (min-height: 760px) {
+  .scroll-cue {
+    display: grid;
+  }
 }
 
 @keyframes scroll-cue-bob {
@@ -639,9 +652,11 @@ summary:focus-visible {
   text-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
 }
 
+/* 0.58 在作品照上只有 3.90:1。標題英譯字級 18px、字重 500，
+   不算大型文字，門檻是 4.5，提到 0.72 才有餘裕（5.09）。 */
 .home-page .hero-title span {
   margin-top: 12px;
-  color: rgba(244, 240, 232, 0.58);
+  color: rgba(244, 240, 232, 0.72);
   font-size: 0.44em;
   font-weight: 500;
   line-height: 1.45;
@@ -674,7 +689,9 @@ summary:focus-visible {
 .hero-name span {
   display: block;
   margin-top: 3px;
-  color: rgba(244, 240, 232, 0.6);
+  /* 0.6 在 1366 與 1920 兩種常見視窗寬度會掉到 4.49 / 4.22，低於 AA 的 4.5；
+     照片會隨視窗縮放，文字底下的明暗跟著變。0.66 在 1280–1920 全段都站得住。 */
+  color: rgba(244, 240, 232, 0.66);
   font-size: 0.62em;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -695,7 +712,7 @@ summary:focus-visible {
 .home-page .hero-text {
   margin-top: 24px;
   max-width: 560px;
-  color: rgba(244, 240, 232, 0.9);
+  color: rgba(244, 240, 232, 0.95);
   font-size: 22px;
   line-height: 1.72;
   word-break: keep-all;
@@ -907,7 +924,9 @@ summary:focus-visible {
   display: block;
   margin-top: 0.35rem;
   color: rgba(244, 240, 232, 0.6);
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  /* 不再指定 Inter：全站沒有載入任何網頁字型，留著它只會讓「本機剛好裝了
+     Inter 的訪客」看到跟其他人不一樣的英譯字體。統一用系統無襯線。 */
+  font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 0.74em;
   font-style: normal;
   font-weight: 500;
@@ -1344,6 +1363,46 @@ figcaption .bilingual-en,
 
 /* 英文頁的藝術家事實欄：策展人、藝廊第一眼要找的資訊，
    用定義列表而不是散文，方便快速掃讀。 */
+/* 展歷：年份一欄、條目一欄。窄螢幕改成上下排，年份不會被擠成兩行。 */
+.cv-list {
+  display: grid;
+  margin: 26px 0 0;
+}
+
+.cv-list > div {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 20px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(244, 240, 232, 0.12);
+}
+
+.cv-list > div:last-child {
+  border-bottom: 1px solid rgba(244, 240, 232, 0.12);
+}
+
+.cv-list dt {
+  color: var(--ember-soft);
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.cv-list dd {
+  margin: 0;
+  color: rgba(244, 240, 232, 0.86);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+@media (max-width: 680px) {
+  .cv-list > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
 .artist-facts {
   display: grid;
   gap: 14px;
@@ -1570,13 +1629,26 @@ figcaption .bilingual-en,
 }
 
 /* 三行聯絡方式原本長得一模一樣，看不出哪些可以點。 */
+/* email / IG / FB 是全站的轉換點，但手機上只有 17px 高。
+   用一層看不見的 ::after 把可點範圍撐到 30px，完全不動版面。 */
 .contact-methods a {
+  position: relative;
   color: inherit;
   text-decoration: underline;
   text-decoration-color: rgba(255, 138, 61, 0.55);
   text-decoration-thickness: 1px;
   text-underline-offset: 5px;
   transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.contact-methods a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 30px;
+  transform: translateY(-50%);
 }
 
 .contact-methods a:hover {
@@ -2749,26 +2821,43 @@ figcaption .bilingual-en,
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  /* 圓點的可點方框已經是 24px，間距改小，視覺間隔才不會被撐開。 */
+  gap: 2px;
   margin-top: 14px;
 }
 
+/* 圓點看起來還是 9px，但可點方框撐到 24×24（WCAG 2.5.8 的下限）。
+   手機上原本 9–11px 的目標幾乎按不中；視覺改由 ::before 畫，按鈕本身透明。 */
 .slideshow-dot {
-  width: 9px;
-  height: 9px;
+  position: relative;
+  width: 24px;
+  height: 24px;
   padding: 0;
-  border: 1px solid rgba(244, 240, 232, 0.55);
+  border: 0;
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
+}
+
+.slideshow-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin: -5px 0 0 -5px;
+  border: 1px solid rgba(244, 240, 232, 0.55);
+  border-radius: 50%;
+  background: transparent;
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-.slideshow-dot:hover {
+.slideshow-dot:hover::before {
   border-color: var(--ember-soft);
 }
 
-.slideshow-dot.is-current {
+.slideshow-dot.is-current::before {
   border-color: var(--ember-soft);
   background: var(--ember-soft);
   transform: scale(1.18);
@@ -2825,7 +2914,7 @@ figcaption .bilingual-en,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slideshow-dot {
+  .slideshow-dot::before {
     transition: none;
   }
 }
@@ -3196,6 +3285,9 @@ figcaption .bilingual-en,
       radial-gradient(ellipse at 52% 42%, rgba(32, 36, 42, 0.3), transparent 68%),
       radial-gradient(ellipse at 78% 18%, rgba(255, 138, 61, 0.07), transparent 58%),
       linear-gradient(180deg, rgba(13, 17, 24, 0.04), rgba(18, 19, 19, 0.44) 58%, rgba(7, 7, 6, 0.58));
+    /* 窄螢幕這裡用的是垂直漸層，左右兩緣是硬切，仍然需要遮罩羽化。 */
+    -webkit-mask-image: radial-gradient(ellipse 76% 80% at 60% 50%, #000 38%, rgba(0, 0, 0, 0.55) 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse 76% 80% at 60% 50%, #000 38%, rgba(0, 0, 0, 0.55) 70%, transparent 100%);
   }
 
   .home-page .universe-logo {
